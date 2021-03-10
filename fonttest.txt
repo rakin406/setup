@@ -1,7 +1,0 @@
-Illegal1 = O0
-
-Compare:
-* 0 and O
-* 1 and l
-* i and l
-* q and g
