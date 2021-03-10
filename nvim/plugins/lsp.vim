@@ -11,12 +11,9 @@ EOF
 nnoremap <silent> [g :lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> ]g :lua vim.lsp.diagnostic.goto_next()<CR>
 nnoremap <silent> gd :lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gy :lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gi :lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> gr :lua vim.lsp.buf.references()<CR>
 nnoremap <silent> K :lua vim.lsp.buf.hover()<CR>
 nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>
-nnoremap <leader>ac :lua vim.lsp.buf.code_action()<CR>
 
 " Save your precious time
 set completeopt=menuone,noinsert,noselect
