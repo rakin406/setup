@@ -67,28 +67,27 @@ let mapleader = " "
 
 call plug#begin()
 " General stuff I need to stay sane
-Plug 'ayu-theme/ayu-vim'
 Plug 'gruvbox-community/gruvbox'
+Plug 'joshdick/onedark.vim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
-" Plugins you need to be the next Bill Gates
+" Make neovim an IDE
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 Plug 'junegunn/vim-easy-align'
 Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'psf/black'
 Plug 'preservim/tagbar'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'preservim/nerdcommenter'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 let g:loaded_python_provider = 0
