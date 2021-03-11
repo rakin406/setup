@@ -68,7 +68,6 @@ let mapleader = " "
 call plug#begin()
 " General stuff I need to stay sane
 Plug 'gruvbox-community/gruvbox'
-Plug 'joshdick/onedark.vim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
 " Make neovim an IDE
