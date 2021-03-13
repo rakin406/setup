@@ -33,10 +33,10 @@ set statusline+=\ line:\ %l     " Current line
 set statusline+=/               " Separator
 set statusline+=%L              " Total lines
 
-" Indentation
+" Spaces > Tabs
 set expandtab
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
 set list
 set listchars=tab:»\ ,trail:·
 
@@ -44,19 +44,19 @@ command! Config find $HOME/.config/nvim/init.vim
 
 " Trim your beard
 fun! TrimWhitespace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
+  let l:save = winsaveview()
+  keeppatterns %s/\s\+$//e
+  call winrestview(l:save)
 endfun
 autocmd BufWritePre * call TrimWhitespace()
 
 " Imitate emacs
 tnoremap <Esc> <C-\><C-n>
 augroup TerminalConfig
-    au!
-    au TermOpen * setlocal nospell
-    au TermOpen * setlocal list
-    au TermOpen * setlocal statusline=%{b:term_title}
+  au!
+  au TermOpen * setlocal nospell
+  au TermOpen * setlocal list
+  au TermOpen * setlocal statusline=%{b:term_title}
 augroup END
 
 " Don't load bloat
@@ -104,7 +104,6 @@ nnoremap <leader>fg :lua require('telescope.builtin').live_grep()<CR>
 nnoremap <leader>fb :lua require('telescope.builtin').buffers()<CR>
 nnoremap <leader>fe :lua require('telescope.builtin').file_browser()<CR>
 
-autocmd FileType go setlocal noexpandtab shiftwidth=4 tabstop=4
 let g:rustfmt_autosave = 1
 
 " Imitate jetbrains?
