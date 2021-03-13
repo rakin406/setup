@@ -3,14 +3,14 @@
 
 # Install programs(apt)
 sudo apt-get install bspwm sxhkd polybar alacritty rofi picom zsh feh ranger \
-    llvm clang python git fzf neofetch lolcat nnn lua
+  llvm clang python git fzf neofetch lolcat nnn lua
 
 # Neovim source
 git clone https://github.com/neovim/neovim.git
 
 # Install neovim plugin manager(vim plug)
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 # Copy configuration files
 cp -r alacritty $HOME/.config
