@@ -17,19 +17,19 @@ export PYENV_ROOT="$HOME/.pyenv"
 
 # Start C++ project without copying like a monkey
 cpp_setup() {
-    # Copy cpp stuff
-    cp $HOME/cppheadstart/Makefile .
-    cp $HOME/cppheadstart/.clang-format .
-    cp $HOME/cppheadstart/.clang-tidy .
-    cp $HOME/cppheadstart/.editorconfig .
-    cp $HOME/cppheadstart/.gitignore .
+  # Copy cpp stuff
+  cp $HOME/cppheadstart/Makefile .
+  cp $HOME/cppheadstart/.clang-format .
+  cp $HOME/cppheadstart/.clang-tidy .
+  cp $HOME/cppheadstart/.editorconfig .
+  cp $HOME/cppheadstart/.gitignore .
 
-    # Source code folder
-    mkdir -p src
-    touch src/main.cpp
+  # Source code folder
+  mkdir -p src
+  touch src/main.cpp
 
-    # Build directory for executables
-    mkdir -p build
+  # Build directory for executables
+  mkdir -p build
 }
 
 # Fzf is really fast
