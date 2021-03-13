@@ -18,11 +18,11 @@ export PYENV_ROOT="$HOME/.pyenv"
 # Start C++ project without copying like a monkey
 cpp_setup() {
     # Copy cpp stuff
-    cp $HOME/mycompmakefile/Makefile .
-    cp $HOME/mycompmakefile/.clang-format .
-    cp $HOME/mycompmakefile/.clang-tidy .
-    cp $HOME/mycompmakefile/.editorconfig .
-    cp $HOME/mycompmakefile/.gitignore .
+    cp $HOME/cppheadstart/Makefile .
+    cp $HOME/cppheadstart/.clang-format .
+    cp $HOME/cppheadstart/.clang-tidy .
+    cp $HOME/cppheadstart/.editorconfig .
+    cp $HOME/cppheadstart/.gitignore .
 
     # Source code folder
     mkdir -p src
@@ -40,7 +40,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Aliases to save my time
 alias fzf='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 alias fzfwal='feh --bg-scale $(fd . $HOME/Downloads/wallpapers | fzf)'
-alias showoff='neofetch | lolcat'
 alias goodbye='doas poweroff'
 alias nnn='nnn -e'
 
