@@ -19,7 +19,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 cpp_setup() {
 	# Copy cpp stuff
 	cp $HOME/cppheadstart/Makefile .
-	cp $HOME/cppheadstart/.clang-format .
 	cp $HOME/cppheadstart/.clang-tidy .
 	cp $HOME/cppheadstart/.editorconfig .
 	cp $HOME/cppheadstart/.gitignore .
