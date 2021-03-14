@@ -1,11 +1,13 @@
 lua << EOF
+-- Compiled languages
 require'lspconfig'.rust_analyzer.setup{}
 require'lspconfig'.clangd.setup{}
 require'lspconfig'.gopls.setup{}
+
+-- Scripting languages
 require'lspconfig'.tsserver.setup{}
 require'lspconfig'.bashls.setup{}
 require'lspconfig'.pyls.setup{}
-require'lspconfig'.html.setup{}
 EOF
 
 nnoremap <silent> [g :lua vim.lsp.diagnostic.goto_prev()<CR>
@@ -17,11 +19,5 @@ nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>
 
 " Save your precious time
 set completeopt=menuone,noinsert,noselect
-augroup CompletionTriggerCharacter
-  autocmd!
-  autocmd BufEnter * let g:completion_trigger_character = ['.']
-  autocmd BufEnter *.c,*.cpp let g:completion_trigger_character = ['.', '::']
-augroup end
-
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 autocmd BufEnter * lua require'completion'.on_attach()
