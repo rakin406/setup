@@ -18,9 +18,9 @@ nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>
 " Save your precious time
 set completeopt=menuone,noinsert,noselect
 augroup CompletionTriggerCharacter
-    autocmd!
-    autocmd BufEnter * let g:completion_trigger_character = ['.']
-    autocmd BufEnter *.c,*.cpp let g:completion_trigger_character = ['.', '::']
+  autocmd!
+  autocmd BufEnter * let g:completion_trigger_character = ['.']
+  autocmd BufEnter *.c,*.cpp let g:completion_trigger_character = ['.', '::']
 augroup end
 
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
