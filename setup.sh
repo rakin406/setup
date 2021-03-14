@@ -3,7 +3,7 @@
 
 # Install programs(apt)
 sudo apt-get install bspwm sxhkd polybar alacritty rofi picom zsh feh ranger \
-  llvm clang python git fzf neofetch lolcat nnn lua
+	llvm clang python git fzf neofetch lolcat nnn lua
 
 # Neovim source
 git clone https://github.com/neovim/neovim.git
