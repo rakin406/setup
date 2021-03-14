@@ -73,8 +73,6 @@ Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 " Make neovim an IDE
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 
 Plug 'junegunn/vim-easy-align'
 Plug 'machakann/vim-sandwich'

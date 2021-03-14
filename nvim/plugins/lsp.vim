@@ -24,5 +24,4 @@ augroup CompletionTriggerCharacter
 augroup end
 
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-let g:completion_enable_snippet = 'UltiSnips'
 autocmd BufEnter * lua require'completion'.on_attach()
