@@ -35,9 +35,6 @@ colors:
     cyan:    '#427b58'
     white:   '#928374'
 
-# Otherwise why should I use wallpapers? ;)
-background_opacity: 0.9
-
 # This font is kinda underrated
 font:
     normal:

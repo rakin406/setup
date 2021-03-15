@@ -22,4 +22,3 @@ xsetroot -cursor_name left_ptr &
 
 ~/.fehbg &
 polybar example &
-picom &

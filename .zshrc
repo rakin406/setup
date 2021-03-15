@@ -38,7 +38,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Aliases to save my time
 alias fzf='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
-alias fzfwal='feh --bg-scale $(fd . $HOME/Downloads/wallpapers | fzf)'
 alias goodbye='doas poweroff'
 alias nnn='nnn -e'
 
