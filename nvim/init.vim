@@ -1,3 +1,9 @@
+let g:loaded_python_provider = 0
+let g:loaded_ruby_provider = 0
+let g:loaded_perl_provider = 0
+let g:python3_host_prog = '/usr/bin/python3'
+let g:node_host_prog = '/usr/bin/neovim-node-host'
+
 set noerrorbells
 set title
 set clipboard+=unnamedplus
@@ -26,14 +32,13 @@ set spelllang=en
 set undodir=$HOME/.config/nvim/undodir
 set undofile
 
-set statusline=%F               " Path to the file
-set statusline+=%=              " Switch to the right side
-set statusline+=col:\ %c,       " Current column
-set statusline+=\ line:\ %l     " Current line
-set statusline+=/               " Separator
-set statusline+=%L              " Total lines
+set statusline=%F
+set statusline+=%=
+set statusline+=col:\ %c,
+set statusline+=\ line:\ %l
+set statusline+=/
+set statusline+=%L
 
-" Spaces > Tabs
 set expandtab
 set shiftwidth=2
 set softtabstop=2
@@ -42,7 +47,6 @@ set listchars=tab:»\ ,trail:·
 
 command! Config find $HOME/.config/nvim/init.vim
 
-" Trim your beard
 fun! TrimWhitespace()
   let l:save = winsaveview()
   keeppatterns %s/\s\+$//e
@@ -50,7 +54,6 @@ fun! TrimWhitespace()
 endfun
 autocmd BufWritePre * call TrimWhitespace()
 
-" Imitate emacs
 tnoremap <Esc> <C-\><C-n>
 augroup TerminalConfig
   au!
@@ -59,21 +62,16 @@ augroup TerminalConfig
   au TermOpen * setlocal statusline=%{b:term_title}
 augroup END
 
-" Don't load bloat
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
 
 let mapleader = " "
 
 call plug#begin()
-" General stuff I need to stay sane
 Plug 'gruvbox-community/gruvbox'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-
-" Make neovim an IDE
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
-
 Plug 'junegunn/vim-easy-align'
 Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-fugitive'
@@ -87,16 +85,21 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
-let g:loaded_python_provider = 0
-let g:loaded_ruby_provider = 0
-let g:loaded_perl_provider = 0
-let g:python3_host_prog = '/usr/bin/python3'
-let g:node_host_prog = '/usr/bin/neovim-node-host'
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
+set background=dark
+
+let g:gruvbox_invert_selection = 0
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
+
+autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 
 nnoremap <silent> <F2> :TagbarToggle<CR>
 nnoremap <silent> <F3> :UndotreeToggle<CR>
 
-" Telescope for astronomy
 nnoremap <leader>ff :lua require('telescope.builtin').find_files()<CR>
 nnoremap <leader>fg :lua require('telescope.builtin').live_grep()<CR>
 nnoremap <leader>fb :lua require('telescope.builtin').buffers()<CR>
@@ -104,15 +107,12 @@ nnoremap <leader>fe :lua require('telescope.builtin').file_browser()<CR>
 
 let g:rustfmt_autosave = 1
 
-" Imitate jetbrains?
 inoremap (<CR> (<CR>)<Esc>O
 inoremap {<CR> {<CR>}<Esc>O
 inoremap [<CR> [<CR>]<Esc>O
 
-" ALWAYS COMMENT YOUR STUPID CODE
 let g:NERDCreateDefaultMappings = 1
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 
-source $HOME/.config/nvim/plugins/colors.vim
 source $HOME/.config/nvim/plugins/lsp.vim

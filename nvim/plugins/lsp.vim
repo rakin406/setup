@@ -1,10 +1,7 @@
 lua << EOF
--- Compiled languages
 require'lspconfig'.rust_analyzer.setup{}
 require'lspconfig'.clangd.setup{}
 require'lspconfig'.gopls.setup{}
-
--- Scripting languages
 require'lspconfig'.tsserver.setup{}
 require'lspconfig'.bashls.setup{}
 require'lspconfig'.pyls.setup{}
@@ -17,7 +14,6 @@ nnoremap <silent> gr :lua vim.lsp.buf.references()<CR>
 nnoremap <silent> K :lua vim.lsp.buf.hover()<CR>
 nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>
 
-" Save your precious time
 set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 autocmd BufEnter * lua require'completion'.on_attach()
