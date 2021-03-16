@@ -2,13 +2,13 @@
 # wm independent hotkeys
 #
 
-# Terminal emulator made by rustaceans!
+# Terminal emulator
 super + Return
-        alacritty
+        urxvtc
 
 # I like it simple :)
 super + d
-        rofi -show drun -show-icons -width 40
+        dmenu_run -h 26
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -122,6 +122,6 @@ super + {Left,Down,Up,Right}
 
 # Some cool mappings by me
 
-# Beautiful lockscreen
+# Simple lockscreen
 super + @space
-        betterlockscreen -l dim
+        slock
