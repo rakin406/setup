@@ -2,6 +2,7 @@ lua << EOF
 require'lspconfig'.rust_analyzer.setup{}
 require'lspconfig'.clangd.setup{}
 require'lspconfig'.gopls.setup{}
+require'lspconfig'.jdtls.setup{}
 require'lspconfig'.tsserver.setup{}
 require'lspconfig'.bashls.setup{}
 require'lspconfig'.pyls.setup{}
