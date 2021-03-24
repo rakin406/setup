@@ -27,7 +27,7 @@
 
 URxvt*inheritPixmap: true
 URxvt*transparent: true
-URxvt*shading: 10
+URxvt*shading: 15
 
 URxvt.font: xft:UbuntuMono Nerd Font:size=17
 URxvt.letterSpace: -1
