@@ -25,10 +25,6 @@
 *color7:  #a89984
 *color15: #ebdbb2
 
-URxvt*inheritPixmap: true
-URxvt*transparent: true
-URxvt*shading: 15
-
 URxvt.font: xft:UbuntuMono Nerd Font:size=17
 URxvt.letterSpace: -1
 URxvt.scrollBar: false
