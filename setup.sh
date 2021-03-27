@@ -22,6 +22,3 @@ cp -r polybar $HOME/.config
 cp -r nvim $HOME/.config
 cp -r wallpapers $HOME/Downloads
 cp .zshrc $HOME
-
-# Set wallpaper
-feh --bg-scale $HOME/Downloads/wallpapers/forest.png
