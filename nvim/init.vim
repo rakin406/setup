@@ -40,26 +40,26 @@ set statusline+=/
 set statusline+=%L
 
 set expandtab
-set shiftwidth=2
-set softtabstop=2
+set shiftwidth=4
+set softtabstop=4
 set list
 set listchars=tab:»\ ,trail:·
 
 command! Config find $HOME/.config/nvim/init.vim
 
 fun! TrimWhitespace()
-  let l:save = winsaveview()
-  keeppatterns %s/\s\+$//e
-  call winrestview(l:save)
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
 endfun
 autocmd BufWritePre * call TrimWhitespace()
 
 tnoremap <Esc> <C-\><C-n>
 augroup TerminalConfig
-  au!
-  au TermOpen * setlocal nospell
-  au TermOpen * setlocal list
-  au TermOpen * setlocal statusline=%{b:term_title}
+    au!
+    au TermOpen * setlocal nospell
+    au TermOpen * setlocal list
+    au TermOpen * setlocal statusline=%{b:term_title}
 augroup END
 
 let g:loaded_netrw = 1
