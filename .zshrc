@@ -17,18 +17,18 @@ export PYENV_ROOT="$HOME/.pyenv"
 
 # Start C++ project without copying like a monkey
 cpp_setup() {
-	# Copy cpp stuff
-	cp $HOME/cppheadstart/Makefile .
-	cp $HOME/cppheadstart/.editorconfig .
-	cp $HOME/cppheadstart/.gitignore .
-	cp $HOME/cppheadstart/.clang-format .
+    # Copy cpp stuff
+    cp $HOME/cppheadstart/Makefile .
+    cp $HOME/cppheadstart/.editorconfig .
+    cp $HOME/cppheadstart/.gitignore .
+    cp $HOME/cppheadstart/.clang-format .
 
-	# Source code folder
-	mkdir -p src
-	touch src/main.cpp
+    # Source code folder
+    mkdir -p src
+    touch src/main.cpp
 
-	# Build directory for executables
-	mkdir -p build
+    # Build directory for executables
+    mkdir -p build
 }
 
 # Fzf is really fast
@@ -42,9 +42,9 @@ alias nnn='nnn -e'
 
 # Save space :)
 prompt_context() {
-	if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-		# prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
-	fi
+    if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+        # prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+    fi
 }
 
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=4'
