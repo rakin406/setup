@@ -9,8 +9,8 @@ export EDITOR=nvim
 export MANPAGER='nvim +Man!'
 
 # Programming related stuff
-# export CC=/usr/bin/clang
-# export CXX=/usr/bin/clang++
+export CC=/usr/bin/clang
+export CXX=/usr/bin/clang++
 export GO111MODULE=on
 export GOPATH=$HOME/.go
 export PYENV_ROOT="$HOME/.pyenv"
@@ -21,6 +21,7 @@ cpp_setup() {
 	cp $HOME/cppheadstart/Makefile .
 	cp $HOME/cppheadstart/.editorconfig .
 	cp $HOME/cppheadstart/.gitignore .
+	cp $HOME/cppheadstart/.clang-format .
 
 	# Source code folder
 	mkdir -p src
