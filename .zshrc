@@ -22,6 +22,7 @@ cpp_setup() {
     cp $HOME/cppheadstart/.editorconfig .
     cp $HOME/cppheadstart/.gitignore .
     cp $HOME/cppheadstart/.clang-format .
+    cp $HOME/cppheadstart/.clang-tidy .
 
     # Source code folder
     mkdir -p src
