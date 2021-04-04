@@ -24,9 +24,6 @@ set magic
 set showmatch
 set autochdir
 set wildmode=list:longest,full
-set nobackup
-set noswapfile
-set nowritebackup
 set spelllang=en
 " set spell
 set undodir=$HOME/.config/nvim/undodir
