@@ -20,6 +20,5 @@ bspc config gapless_monocle      true
 # Fix that annoying cursor
 xsetroot -cursor_name left_ptr &
 
-~/.fehbg &
+nitrogen --restore &
 polybar example &
-urxvtd &

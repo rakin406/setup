@@ -4,11 +4,11 @@
 
 # Terminal emulator
 super + Return
-        urxvtc
+        urxvt
 
 # I like it simple :)
 super + d
-        dmenu_run -h 26
+        rofi -show drun -show-icons -width 40
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -124,4 +124,4 @@ super + {Left,Down,Up,Right}
 
 # Simple lockscreen
 super + @space
-        slock
+        betterlockscreen -l dim
