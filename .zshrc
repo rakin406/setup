@@ -12,13 +12,13 @@ export MANPAGER='nvim +Man!'
 export CC=/usr/bin/clang
 export CXX=/usr/bin/clang++
 export GO111MODULE=on
-export GOPATH=$HOME/.go
+# export GOPATH=$HOME/.go
 export PYENV_ROOT="$HOME/.pyenv"
 
 # Start C++ project without copying like a monkey
 cpp_setup() {
     # Copy cpp stuff
-    cp $HOME/cppheadstart/Makefile .
+    cp $HOME/cppheadstart/CMakeLists.txt .
     cp $HOME/cppheadstart/.editorconfig .
     cp $HOME/cppheadstart/.gitignore .
     cp $HOME/cppheadstart/.clang-format .
