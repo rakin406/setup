@@ -2,7 +2,7 @@
 
 # Install programs(apt)
 sudo apt-get install bspwm sxhkd polybar rofi zsh ranger nitrogen llvm clang \
-    python git fzf neofetch lua firefox
+    python git fzf neofetch lua firefox cmake make
 
 # Neovim source
 git clone https://github.com/neovim/neovim.git
