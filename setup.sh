@@ -1,5 +1,4 @@
-#!/usr/bin/bash
-# TODO: Did I forget anything?
+#!/usr/bin/env bash
 
 # Install programs(apt)
 sudo apt-get install bspwm sxhkd polybar alacritty rofi picom zsh feh ranger \
