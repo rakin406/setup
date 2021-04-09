@@ -70,7 +70,6 @@ Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'neovim/nvim-lspconfig'
 Plug 'mfussenegger/nvim-jdtls'
 Plug 'nvim-lua/completion-nvim'
-Plug 'junegunn/vim-easy-align'
 Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
