@@ -2,7 +2,8 @@
 
 # Install programs(apt)
 sudo apt-get install bspwm sxhkd polybar rofi zsh ranger nitrogen llvm clang \
-    python git fzf neofetch lua firefox cmake make
+    python git fzf neofetch lua firefox cmake make thunar brave cheese termite \
+    alacritty kitty tor
 
 # Install latest version of neovim
 git clone https://github.com/rakin406/useful-scripts.git
