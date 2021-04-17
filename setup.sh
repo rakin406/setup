@@ -15,3 +15,5 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 # Copy configuration files
 cp -r bspwm sxhkd ranger polybar nvim $HOME/.config/
 cp .zshrc .Xresources $HOME/
+
+mkdir -p $HOME/code
