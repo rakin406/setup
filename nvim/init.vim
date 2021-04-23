@@ -73,7 +73,6 @@ Plug 'nvim-lua/completion-nvim'
 Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
-Plug 'psf/black'
 Plug 'preservim/tagbar'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'preservim/nerdcommenter'
