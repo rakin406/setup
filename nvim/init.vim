@@ -36,6 +36,7 @@ set statusline+=\ line:\ %l
 set statusline+=/
 set statusline+=%L
 
+" Indentation
 set expandtab
 set shiftwidth=4
 set softtabstop=4
@@ -59,9 +60,6 @@ augroup TerminalConfig
     au TermOpen * setlocal statusline=%{b:term_title}
 augroup END
 
-let g:loaded_netrw = 1
-let g:loaded_netrwPlugin = 1
-
 let mapleader = " "
 
 call plug#begin()
@@ -81,21 +79,27 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
+" Colors
 set background=dark
 let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
 hi Normal guibg=NONE ctermbg=NONE
-
 autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 
-nnoremap <silent> <F2> :TagbarToggle<CR>
-nnoremap <silent> <F3> :UndotreeToggle<CR>
+" File explorer(netrw)
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+let g:netrw_winsize = 25
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+
+nnoremap <silent> <F2> :Lexplore<CR>
+nnoremap <silent> <F3> :TagbarToggle<CR>
+nnoremap <silent> <F4> :UndotreeToggle<CR>
 
 nnoremap <leader>ff :lua require('telescope.builtin').find_files()<CR>
 nnoremap <leader>fg :lua require('telescope.builtin').live_grep()<CR>
 nnoremap <leader>fb :lua require('telescope.builtin').buffers()<CR>
-nnoremap <leader>fe :lua require('telescope.builtin').file_browser()<CR>
 
 let g:rustfmt_autosave = 1
 
