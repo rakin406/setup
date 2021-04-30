@@ -6,13 +6,6 @@ require'lspconfig'.bashls.setup{}
 require'lspconfig'.pyls.setup{}
 EOF
 
-if has('nvim-0.5')
-    augroup lsp
-        au!
-        au FileType java lua require('jdtls').start_or_attach({cmd = {'start-jdtls.sh'}})
-    augroup end
-endif
-
 nnoremap <silent> [g :lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> ]g :lua vim.lsp.diagnostic.goto_next()<CR>
 nnoremap <silent> gd :lua vim.lsp.buf.definition()<CR>
