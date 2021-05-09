@@ -4,7 +4,7 @@
 
 # Terminal emulator
 super + Return
-        urxvt
+        alacritty
 
 # I like it simple :)
 super + d
