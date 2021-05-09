@@ -57,7 +57,6 @@ augroup END
 let mapleader = " "
 
 call plug#begin()
-Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'neovim/nvim-lspconfig'
