@@ -22,3 +22,4 @@ xsetroot -cursor_name left_ptr &
 
 nitrogen --restore &
 polybar example &
+picom &
