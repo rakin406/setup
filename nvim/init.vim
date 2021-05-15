@@ -59,6 +59,7 @@ let mapleader = " "
 call plug#begin()
 Plug 'sainnhe/gruvbox-material'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'neovim/nvim-lspconfig'
 Plug 'mfussenegger/nvim-jdtls'
 Plug 'nvim-lua/completion-nvim'
@@ -80,7 +81,7 @@ let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_disable_italic_comment = 1
 let g:gruvbox_material_enable_bold = 1
 let g:gruvbox_material_better_performance = 1
-let g:gruvbox_material_transparent_background = 1
+" let g:gruvbox_material_transparent_background = 1
 colorscheme gruvbox-material
 autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
