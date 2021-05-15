@@ -40,6 +40,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Aliases to save my time
 alias fzf='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 alias nnn='nnn -e'
+alias ls='lsd'
 
 # Save space :)
 prompt_context() {
@@ -53,3 +54,4 @@ prompt_context() {
 # Get all the cool stuff
 source "$HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source /home/rakin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
