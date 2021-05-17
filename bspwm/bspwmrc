@@ -20,6 +20,10 @@ bspc config gapless_monocle      true
 # Fix that annoying cursor
 xsetroot -cursor_name left_ptr &
 
+# Fix android studio
+wmname LG3D &
+bspc rule -a android-studio state=floating border=off follow=on
+
 nitrogen --restore &
 polybar example &
-picom &
+# picom &
