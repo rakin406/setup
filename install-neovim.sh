@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Install the latest version of neovim
 
-rm -f /usr/local/bin/nvim
+sudo rm /usr/local/bin/nvim
 rm -rf neovim
 git clone https://github.com/neovim/neovim.git
 cd neovim || exit
