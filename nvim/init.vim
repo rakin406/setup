@@ -5,7 +5,6 @@ set number relativenumber
 set scrolloff=5
 set mouse=a
 set nowrap
-set guicursor=
 set colorcolumn=80
 set inccommand=split
 set signcolumn=number
@@ -19,23 +18,14 @@ set showmatch
 set autochdir
 set wildmode=list:longest,full
 set spelllang=en
-" set spell
 set undodir=$HOME/.config/nvim/undodir
 set undofile
-
-set statusline=%F
-set statusline+=%=
-set statusline+=col:\ %c,
-set statusline+=\ line:\ %l
-set statusline+=/
-set statusline+=%L
+set noshowmode
 
 " Indentation
 set expandtab
 set shiftwidth=4
 set softtabstop=4
-set list
-set listchars=tab:»\ ,trail:·
 
 command! Config find $HOME/.config/nvim/init.vim
 
@@ -57,13 +47,16 @@ augroup END
 let mapleader = " "
 
 call plug#begin()
-Plug 'sainnhe/gruvbox-material'
+Plug 'morhetz/gruvbox'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+Plug 'Yggdroot/indentLine'
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'vim-airline/vim-airline'
 Plug 'neovim/nvim-lspconfig'
 Plug 'mfussenegger/nvim-jdtls'
 Plug 'nvim-lua/completion-nvim'
 Plug 'machakann/vim-sandwich'
+Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'preservim/tagbar'
@@ -77,14 +70,13 @@ call plug#end()
 " Colors
 set termguicolors
 set background=dark
-let g:gruvbox_material_background = 'hard'
-let g:gruvbox_material_disable_italic_comment = 1
-let g:gruvbox_material_enable_bold = 1
-let g:gruvbox_material_better_performance = 1
-" let g:gruvbox_material_transparent_background = 1
-colorscheme gruvbox-material
+let g:gruvbox_italic = 1
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
 autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
+let g:airline_powerline_fonts = 1
+let g:airline_highlighting_cache = 1
 
 " File explorer(netrw)
 let g:netrw_liststyle = 3
@@ -101,10 +93,6 @@ nnoremap <leader>fg :lua require('telescope.builtin').live_grep()<CR>
 nnoremap <leader>fb :lua require('telescope.builtin').buffers()<CR>
 
 let g:rustfmt_autosave = 1
-
-inoremap (<CR> (<CR>)<Esc>O
-inoremap {<CR> {<CR>}<Esc>O
-inoremap [<CR> [<CR>]<Esc>O
 
 let g:NERDCreateDefaultMappings = 1
 let g:NERDSpaceDelims = 1
