@@ -61,6 +61,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'preservim/tagbar'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'psf/black'
 Plug 'preservim/nerdcommenter'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
