@@ -78,6 +78,7 @@ autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 let g:airline_powerline_fonts = 1
 let g:airline_highlighting_cache = 1
+hi Normal guibg=NONE ctermbg=NONE
 
 " File explorer(netrw)
 let g:netrw_liststyle = 3
