@@ -11,7 +11,7 @@ export MANPAGER='nvim +Man!'
 # Programming related stuff
 export CC=/usr/bin/clang
 export CXX=/usr/bin/clang++
-export GO111MODULE=on
+# export GO111MODULE=on
 # export GOPATH=$HOME/.go
 export PYENV_ROOT="$HOME/.pyenv"
 
@@ -34,13 +34,14 @@ cpp_setup() {
 
 # Fzf is really fast
 export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border'
-export FZF_DEFAULT_COMMAND='fd --type f'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# export FZF_DEFAULT_COMMAND='fd --type f'
+# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Aliases to save my time
 alias fzf='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 alias nnn='nnn -e'
-alias ls='lsd'
+alias vcpkg='$HOME/vcpkg/vcpkg'
+# alias ls='lsd'
 
 # Save space :)
 prompt_context() {
@@ -54,4 +55,3 @@ prompt_context() {
 # Get all the cool stuff
 source "$HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source /home/rakin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
