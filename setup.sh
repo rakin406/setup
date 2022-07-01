@@ -3,7 +3,7 @@
 
 # Install programs(apt)
 apt update && apt upgrade
-apt install git python3 zsh ranger fonts-powerline fzf nnn
+apt install git zsh ranger fonts-powerline fzf nnn
 ./install-neovim.sh
 
 # make zsh the default shell
@@ -12,6 +12,9 @@ chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+
+# Install image previewer for ranger
+pip3 install ueberzug
 
 # Copy configuration files
 cp -r ranger nvim "$HOME"/.config/
