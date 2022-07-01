@@ -10,7 +10,7 @@ apt install git zsh ranger fonts-powerline fzf nnn
 chsh -s $(which zsh)
 # install ohmyzsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
 # Install image previewer for ranger

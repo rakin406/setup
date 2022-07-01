@@ -53,5 +53,5 @@ prompt_context() {
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=4'
 
 # Get all the cool stuff
-source "$HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
