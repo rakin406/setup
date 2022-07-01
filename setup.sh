@@ -3,7 +3,7 @@
 
 # Install programs(apt)
 apt update && apt upgrade
-apt install git python3 bspwm sxhkd zsh ranger fonts-powerline
+apt install git python3 bspwm sxhkd zsh ranger fonts-powerline fzf nnn
 ./install-neovim.sh
 
 # Install all dependencies for polybar
@@ -21,6 +21,13 @@ git clone https://github.com/jaagr/polybar.git
 cd polybar && ./build.sh
 cd ..
 rm -rf polybar
+
+# make zsh the default shell
+chsh -s $(which zsh)
+# install ohmyzsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
 # Copy configuration files
 cp -r bspwm sxhkd ranger polybar nvim "$HOME"/.config/
