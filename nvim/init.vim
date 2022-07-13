@@ -56,6 +56,7 @@ Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'psf/black'
 Plug 'preservim/nerdcommenter'
+Plug 'stevearc/vim-arduino'
 call plug#end()
 
 " Colors
