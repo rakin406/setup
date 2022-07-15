@@ -119,3 +119,5 @@ let g:rustfmt_autosave = 1
 let g:NERDCreateDefaultMappings = 1
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
+
+nnoremap <buffer> <leader>au <cmd>ArduinoUpload<CR>
