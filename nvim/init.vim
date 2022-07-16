@@ -44,6 +44,7 @@ let mapleader = " "
 
 call plug#begin()
 Plug 'ericbn/vim-solarized'
+Plug 'ziglang/zig.vim'
 " Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
