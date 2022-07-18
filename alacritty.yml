@@ -35,13 +35,13 @@ colors:
 # This font is kinda underrated
 font:
     normal:
-        family: Ubuntu Mono
-        style: Regular
+        family: Hasklug Nerd Font
+        style: Medium
     bold:
-        family: Ubuntu Mono
+        family: Hasklug Nerd Font
         style: Bold
     italic:
-        family: Ubuntu Mono
+        family: Hasklug Nerd Font
         style: Italic
 
     # Don't know if this font is too big or too small for people
