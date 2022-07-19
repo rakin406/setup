@@ -8,7 +8,7 @@ set mouse=a
 set nowrap
 set colorcolumn=80
 set inccommand=split
-set signcolumn
+set signcolumn=number
 set hidden
 set lazyredraw
 set updatetime=300
@@ -93,6 +93,9 @@ let g:airline_highlighting_cache = 1
 let g:coq_settings = { 'auto_start': v:true }
 lua require("nvim-lsp-installer").setup {}
 lua require'lspconfig'.elixirls.setup{}
+lua require'lspconfig'.tsserver.setup{}
+lua require'lspconfig'.cssls.setup{}
+lua require'lspconfig'.html.setup{}
 
 " LSP configuration
 nnoremap <silent> [g :lua vim.lsp.diagnostic.goto_prev()<CR>
