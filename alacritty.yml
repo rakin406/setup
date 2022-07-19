@@ -39,7 +39,7 @@ font:
         style: Medium
     bold:
         family: Hasklug Nerd Font
-        style: Bold
+        style: Medium
     italic:
         family: Hasklug Nerd Font
         style: Italic
