@@ -56,9 +56,11 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 call plug#begin()
 Plug 'ericbn/vim-solarized'
-Plug 'sheerun/vim-polyglot'
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 " Plug 'morhetz/gruvbox'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'neovim/nvim-lspconfig'
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'Yggdroot/indentLine'
 Plug 'vim-airline/vim-airline'
@@ -70,6 +72,9 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'psf/black'
 Plug 'preservim/nerdcommenter'
 Plug 'stevearc/vim-arduino'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 " Colors
@@ -80,37 +85,22 @@ colorscheme solarized
 " let g:gruvbox_contrast_dark = 'hard'
 " colorscheme gruvbox
 autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 let g:airline_powerline_fonts = 1
 let g:airline_highlighting_cache = 1
 " hi Normal guibg=NONE ctermbg=NONE
 
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+let g:coq_settings = { 'auto_start': v:true }
+lua require("nvim-lsp-installer").setup {}
+lua require'lspconfig'.elixirls.setup{}
 
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call ShowDocumentation()<CR>
-
-function! ShowDocumentation()
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  else
-    call feedkeys('K', 'in')
-  endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+" LSP configuration
+nnoremap <silent> [g :lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap <silent> ]g :lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <silent> gd :lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gr :lua vim.lsp.buf.references()<CR>
+nnoremap <silent> K :lua vim.lsp.buf.hover()<CR>
+nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>
 
 " Markdown configuration
 let g:mkdp_refresh_slow = 1
@@ -124,8 +114,13 @@ let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 
-nnoremap <silent> <leader>f :Lexplore<CR>
+nnoremap <silent> <leader>fe :Lexplore<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
+
+" Fuzzy finder
+nnoremap <leader>ff :lua require('telescope.builtin').find_files()<CR>
+nnoremap <leader>fg :lua require('telescope.builtin').live_grep()<CR>
+nnoremap <leader>fb :lua require('telescope.builtin').buffers()<CR>
 
 let g:rustfmt_autosave = 1
 
