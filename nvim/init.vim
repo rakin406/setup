@@ -56,6 +56,7 @@ call plug#begin()
 Plug 'ericbn/vim-solarized'
 Plug 'karb94/neoscroll.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'stevearc/dressing.nvim'
 Plug 'lewis6991/spellsitter.nvim'
 Plug 'folke/lsp-colors.nvim'
@@ -87,6 +88,7 @@ Plug 'stevearc/vim-arduino'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-media-files.nvim'
 call plug#end()
 
 " UI
@@ -237,7 +239,20 @@ nnoremap <silent> <leader>fe :NvimTreeToggle<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
 nnoremap <silent> <leader>t :Vista!!<CR>
 
-" Fuzzy finder
+" Fuzzy finder image preview
+lua require('telescope').load_extension('media_files')
+lua <<EOF
+require'telescope'.setup {
+  extensions = {
+    media_files = {
+      filetypes = {"png", "webp", "jpg", "jpeg"},
+      find_cmd = "rg"
+    }
+  },
+}
+EOF
+
+" Fuzzy finder keybinding
 nnoremap <leader>ff :lua require('telescope.builtin').find_files()<CR>
 nnoremap <leader>fg :lua require('telescope.builtin').live_grep()<CR>
 nnoremap <leader>fb :lua require('telescope.builtin').buffers()<CR>
