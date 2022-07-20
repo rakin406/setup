@@ -70,6 +70,7 @@ Plug 'machakann/vim-sandwich'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'liuchengxu/vista.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'psf/black'
@@ -143,6 +144,9 @@ let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 
+" A better file explorer
+lua require("nvim-tree").setup()
+
 " Tag viewer and finder
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_default_executive = 'ctags'
@@ -154,7 +158,8 @@ let g:vista#renderer#icons = {
 \   "variable": "\uf71b",
 \  }
 
-nnoremap <silent> <leader>fe :Lexplore<CR>
+" nnoremap <silent> <leader>fe :Lexplore<CR>
+nnoremap <silent> <leader>fe :NvimTreeToggle<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
 nnoremap <silent> <leader>t :Vista!!<CR>
 
