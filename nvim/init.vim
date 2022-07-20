@@ -64,6 +64,8 @@ Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'Yggdroot/indentLine'
 Plug 'vim-airline/vim-airline'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'romgrk/barbar.nvim'
 Plug 'machakann/vim-sandwich'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
@@ -91,6 +93,29 @@ let g:airline_powerline_fonts = 1
 let g:airline_highlighting_cache = 1
 " hi Normal guibg=NONE ctermbg=NONE
 
+
+" Tabs from the awesome barbar plugin
+" Move to previous/next
+nnoremap <silent>    <A-,> <Cmd>BufferPrevious<CR>
+nnoremap <silent>    <A-.> <Cmd>BufferNext<CR>
+" Re-order to previous/next
+nnoremap <silent>    <A-<> <Cmd>BufferMovePrevious<CR>
+nnoremap <silent>    <A->> <Cmd>BufferMoveNext<CR>
+" Goto buffer in position...
+nnoremap <silent>    <A-1> <Cmd>BufferGoto 1<CR>
+nnoremap <silent>    <A-2> <Cmd>BufferGoto 2<CR>
+nnoremap <silent>    <A-3> <Cmd>BufferGoto 3<CR>
+nnoremap <silent>    <A-4> <Cmd>BufferGoto 4<CR>
+nnoremap <silent>    <A-5> <Cmd>BufferGoto 5<CR>
+nnoremap <silent>    <A-6> <Cmd>BufferGoto 6<CR>
+nnoremap <silent>    <A-7> <Cmd>BufferGoto 7<CR>
+nnoremap <silent>    <A-8> <Cmd>BufferGoto 8<CR>
+nnoremap <silent>    <A-9> <Cmd>BufferGoto 9<CR>
+nnoremap <silent>    <A-0> <Cmd>BufferLast<CR>
+nnoremap <silent>    <A-c> <Cmd>BufferClose<CR>
+
+
+" LSP configuration
 let g:coq_settings = { 'auto_start': v:true }
 lua require("nvim-lsp-installer").setup {}
 lua require'lspconfig'.elixirls.setup{}
@@ -98,7 +123,7 @@ lua require'lspconfig'.tsserver.setup{}
 lua require'lspconfig'.cssls.setup{}
 lua require'lspconfig'.html.setup{}
 
-" LSP configuration
+" LSP keybindings
 nnoremap <silent> [g :lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> ]g :lua vim.lsp.diagnostic.goto_next()<CR>
 nnoremap <silent> gd :lua vim.lsp.buf.definition()<CR>
