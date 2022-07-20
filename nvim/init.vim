@@ -19,12 +19,10 @@ set showmatch
 set autochdir
 set wildmode=list:longest,full
 set spelllang=en
+set spell
 set undodir=$HOME/.config/nvim/undodir
 set undofile
 set noshowmode
-
-" Spell
-autocmd BufRead,BufNewFile *.txt,*.md setlocal spell
 
 " Indentation
 set expandtab
@@ -56,14 +54,23 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 call plug#begin()
 Plug 'ericbn/vim-solarized'
+Plug 'karb94/neoscroll.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-" Plug 'morhetz/gruvbox'
+Plug 'stevearc/dressing.nvim'
+Plug 'lewis6991/spellsitter.nvim'
+Plug 'folke/lsp-colors.nvim'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
+Plug 'folke/trouble.nvim'
+Plug 'RishabhRD/popfix'
+Plug 'RishabhRD/nvim-lsputils'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'pechorin/any-jump.vim'
+Plug 'kosayoda/nvim-lightbulb'
+Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'Yggdroot/indentLine'
-Plug 'vim-airline/vim-airline'
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 Plug 'machakann/vim-sandwich'
@@ -75,13 +82,14 @@ Plug 'liuchengxu/vista.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'psf/black'
 Plug 'preservim/nerdcommenter'
+Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
 Plug 'stevearc/vim-arduino'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
-" Colors
+" UI
 set termguicolors
 set background=light
 colorscheme solarized
@@ -90,9 +98,10 @@ colorscheme solarized
 " colorscheme gruvbox
 autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
-let g:airline_powerline_fonts = 1
-let g:airline_highlighting_cache = 1
+lua require('spellsitter').setup()
 " hi Normal guibg=NONE ctermbg=NONE
+lua require('lualine').setup()
+lua require('neoscroll').setup()
 
 
 " Tabs from the awesome barbar plugin
@@ -127,6 +136,64 @@ lua require'lspconfig'.tsserver.setup{}
 lua require'lspconfig'.cssls.setup{}
 lua require'lspconfig'.html.setup{}
 
+
+" Better defaults for LSP actions
+lua <<EOF
+if vim.fn.has('nvim-0.5.1') == 1 then
+    vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
+    vim.lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
+    vim.lsp.handlers['textDocument/definition'] = require'lsputil.locations'.definition_handler
+    vim.lsp.handlers['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
+    vim.lsp.handlers['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
+    vim.lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
+    vim.lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
+    vim.lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
+else
+    local bufnr = vim.api.nvim_buf_get_number(0)
+
+    vim.lsp.handlers['textDocument/codeAction'] = function(_, _, actions)
+        require('lsputil.codeAction').code_action_handler(nil, actions, nil, nil, nil)
+    end
+
+    vim.lsp.handlers['textDocument/references'] = function(_, _, result)
+        require('lsputil.locations').references_handler(nil, result, { bufnr = bufnr }, nil)
+    end
+
+    vim.lsp.handlers['textDocument/definition'] = function(_, method, result)
+        require('lsputil.locations').definition_handler(nil, result, { bufnr = bufnr, method = method }, nil)
+    end
+
+    vim.lsp.handlers['textDocument/declaration'] = function(_, method, result)
+        require('lsputil.locations').declaration_handler(nil, result, { bufnr = bufnr, method = method }, nil)
+    end
+
+    vim.lsp.handlers['textDocument/typeDefinition'] = function(_, method, result)
+        require('lsputil.locations').typeDefinition_handler(nil, result, { bufnr = bufnr, method = method }, nil)
+    end
+
+    vim.lsp.handlers['textDocument/implementation'] = function(_, method, result)
+        require('lsputil.locations').implementation_handler(nil, result, { bufnr = bufnr, method = method }, nil)
+    end
+
+    vim.lsp.handlers['textDocument/documentSymbol'] = function(_, _, result, _, bufn)
+        require('lsputil.symbols').document_handler(nil, result, { bufnr = bufn }, nil)
+    end
+
+    vim.lsp.handlers['textDocument/symbol'] = function(_, _, result, _, bufn)
+        require('lsputil.symbols').workspace_handler(nil, result, { bufnr = bufn }, nil)
+    end
+end
+EOF
+
+
+" Jump to definition with explorer
+let g:any_jump_disable_default_keybindings = 1
+let g:any_jump_search_prefered_engine = 'rg'
+nnoremap <leader>j :AnyJump<CR>
+
+" VSCode vibe :)
+lua require('nvim-lightbulb').setup({autocmd = {enabled = true}})
+
 " LSP keybindings
 nnoremap <silent> [g :lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> ]g :lua vim.lsp.diagnostic.goto_next()<CR>
@@ -134,6 +201,10 @@ nnoremap <silent> gd :lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gr :lua vim.lsp.buf.references()<CR>
 nnoremap <silent> K :lua vim.lsp.buf.hover()<CR>
 nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>
+
+" For code error navigation
+lua require("trouble").setup {}
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
 
 " Markdown configuration
 let g:mkdp_refresh_slow = 1
