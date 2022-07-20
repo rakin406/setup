@@ -115,6 +115,9 @@ nnoremap <silent>    <A-9> <Cmd>BufferGoto 9<CR>
 nnoremap <silent>    <A-0> <Cmd>BufferLast<CR>
 nnoremap <silent>    <A-c> <Cmd>BufferClose<CR>
 
+let bufferline = get(g:, 'bufferline', {})
+let bufferline.auto_hide = v:true
+
 
 " LSP configuration
 let g:coq_settings = { 'auto_start': v:true }
