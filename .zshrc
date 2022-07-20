@@ -52,8 +52,8 @@ prompt_context() {
 
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=4'
 
-# Get all the cool stuff
-source "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+# Load all plugins
+source "$HOME/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 source "$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # Start tmux by default
