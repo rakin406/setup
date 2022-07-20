@@ -9,11 +9,11 @@ export EDITOR=nvim
 export MANPAGER='nvim +Man!'
 
 # Programming related stuff
-export CC=/usr/bin/clang
-export CXX=/usr/bin/clang++
+# export CC=/usr/bin/clang
+# export CXX=/usr/bin/clang++
 # export GO111MODULE=on
 # export GOPATH=$HOME/.go
-export PYENV_ROOT="$HOME/.pyenv"
+# export PYENV_ROOT="$HOME/.pyenv"
 
 # Start C++ project without copying like a monkey
 cpp_setup() {
@@ -40,7 +40,7 @@ export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border'
 # Aliases to save my time
 alias fzf='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 alias nnn='nnn -e'
-alias vcpkg='$HOME/vcpkg/vcpkg'
+# alias vcpkg='$HOME/vcpkg/vcpkg'
 # alias ls='lsd'
 
 # Save space :)
@@ -55,3 +55,8 @@ prompt_context() {
 # Get all the cool stuff
 source "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
+# Start tmux by default
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+    exec tmux
+fi
