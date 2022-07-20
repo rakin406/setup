@@ -1,5 +1,5 @@
 export ZSH="$HOME/.oh-my-zsh"
-plugins=(git)
+plugins=()
 ZSH_THEME="agnoster"
 source "$ZSH/oh-my-zsh.sh"
 
