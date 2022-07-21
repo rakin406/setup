@@ -68,7 +68,7 @@ Plug 'folke/trouble.nvim'
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-lsputils'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-Plug 'pechorin/any-jump.vim'
+Plug 'pechorin/any-jump.vim', { 'on': 'AnyJump' }
 Plug 'kosayoda/nvim-lightbulb'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -82,12 +82,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'liuchengxu/vista.vim'
+Plug 'liuchengxu/vista.vim', { 'on': 'Vista!!' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'psf/black'
 Plug 'preservim/nerdcommenter'
 Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
-Plug 'stevearc/vim-arduino'
+Plug 'stevearc/vim-arduino', { 'on': 'ArduinoUpload' }
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
