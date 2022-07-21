@@ -58,6 +58,7 @@ Plug 'gelguy/wilder.nvim', { 'on': 'CmdlineEnter' }
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'ericbn/vim-solarized'
+Plug 'norcalli/nvim-colorizer.lua'
 Plug 'karb94/neoscroll.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'nvim-treesitter/nvim-treesitter-context'
@@ -96,7 +97,6 @@ Plug 'stevearc/vim-arduino', { 'on': 'ArduinoUpload' }
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-media-files.nvim'
 call plug#end()
 
 " Faster startup
@@ -142,6 +142,7 @@ colorscheme solarized
 " let g:gruvbox_contrast_dark = 'hard'
 " colorscheme gruvbox
 autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+lua require'colorizer'.setup()
 
 lua <<EOF
 require('nvim-treesitter.configs').setup {
@@ -299,19 +300,6 @@ let g:vista#renderer#icons = {
 nnoremap <silent> <leader>fe :NvimTreeToggle<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
 nnoremap <silent> <leader>t :Vista!!<CR>
-
-" Fuzzy finder image preview
-lua require('telescope').load_extension('media_files')
-lua <<EOF
-require'telescope'.setup {
-  extensions = {
-    media_files = {
-      filetypes = {"png", "webp", "jpg", "jpeg"},
-      find_cmd = "rg"
-    }
-  },
-}
-EOF
 
 " Fuzzy finder keybinding
 nnoremap <leader>ff :lua require('telescope.builtin').find_files()<CR>
