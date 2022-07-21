@@ -54,6 +54,9 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 call plug#begin()
 Plug 'lewis6991/impatient.nvim'
+Plug 'gelguy/wilder.nvim', { 'on': 'CmdlineEnter' }
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'ericbn/vim-solarized'
 Plug 'karb94/neoscroll.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
@@ -65,6 +68,8 @@ Plug 'folke/lsp-colors.nvim'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
 Plug 'folke/trouble.nvim'
+Plug 'kevinhwang91/nvim-hlslens'
+Plug 'petertriho/nvim-scrollbar'
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-lsputils'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
@@ -96,6 +101,38 @@ call plug#end()
 
 " Faster startup
 lua require('impatient')
+
+" Better autocompletion in command mode
+autocmd CmdlineEnter * ++once call s:wilder_init() | call wilder#main#start()
+function! s:wilder_init() abort
+    call wilder#setup({'modes': [':', '/', '?']})
+    call wilder#set_option('pipeline', [
+          \   wilder#branch(
+          \     wilder#cmdline_pipeline({
+          \       'fuzzy': 1,
+          \       'fuzzy_filter': wilder#vim_fuzzy_filter(),
+          \       'set_pcre2_pattern': 1,
+          \     }),
+          \     wilder#python_search_pipeline({
+          \       'pattern': 'fuzzy',
+          \     }),
+          \   ),
+          \ ])
+
+    let s:highlighters = [
+            \ wilder#pcre2_highlighter(),
+            \ wilder#basic_highlighter(),
+            \ ]
+
+    call wilder#set_option('renderer', wilder#renderer_mux({
+          \ ':': wilder#popupmenu_renderer({
+          \   'highlighter': s:highlighters,
+          \ }),
+          \ '/': wilder#wildmenu_renderer({
+          \   'highlighter': s:highlighters,
+          \ }),
+          \ }))
+endfunction
 
 " UI
 set termguicolors
@@ -228,6 +265,9 @@ nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>
 " For code error navigation
 lua require("trouble").setup {}
 nnoremap <leader>xx <cmd>TroubleToggle<cr>
+
+lua require("scrollbar").setup()
+lua require("scrollbar.handlers.search").setup()
 
 " Markdown configuration
 let g:mkdp_refresh_slow = 1
