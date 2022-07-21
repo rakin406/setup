@@ -324,6 +324,7 @@ let g:rustfmt_autosave = 1
 let g:NERDCreateDefaultMappings = 0
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
-nnoremap <leader>c<space> <plug>NERDCommenterToggle
+let g:NERDToggleCheckAllLines = 1
+noremap <leader>c<space> <plug>NERDCommenterToggle
 
 nnoremap <buffer> <leader>au <cmd>ArduinoUpload<CR>
