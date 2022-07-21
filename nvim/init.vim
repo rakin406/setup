@@ -53,10 +53,12 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 \| endif
 
 call plug#begin()
+Plug 'lewis6991/impatient.nvim'
 Plug 'ericbn/vim-solarized'
 Plug 'karb94/neoscroll.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'p00f/nvim-ts-rainbow'
 Plug 'stevearc/dressing.nvim'
 Plug 'lewis6991/spellsitter.nvim'
 Plug 'folke/lsp-colors.nvim'
@@ -91,6 +93,9 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-media-files.nvim'
 call plug#end()
 
+" Faster startup
+lua require('impatient')
+
 " UI
 set termguicolors
 set background=light
@@ -99,7 +104,20 @@ colorscheme solarized
 " let g:gruvbox_contrast_dark = 'hard'
 " colorscheme gruvbox
 autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
-lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
+
+lua <<EOF
+require('nvim-treesitter.configs').setup {
+    highlight = {
+        enable = true,
+    },
+    rainbow = {
+        enable = true,
+        extended_mode = true,
+        max_file_lines = nil,
+    }
+}
+EOF
+
 lua require('spellsitter').setup()
 " hi Normal guibg=NONE ctermbg=NONE
 lua require('lualine').setup()
