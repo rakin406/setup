@@ -79,6 +79,7 @@ Plug 'romgrk/barbar.nvim'
 Plug 'machakann/vim-sandwich'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'liuchengxu/vista.vim'
@@ -122,6 +123,7 @@ lua require('spellsitter').setup()
 " hi Normal guibg=NONE ctermbg=NONE
 lua require('lualine').setup()
 lua require('neoscroll').setup()
+lua require('gitsigns').setup()
 
 
 " Tabs from the awesome barbar plugin
@@ -220,6 +222,7 @@ nnoremap <silent> ]g :lua vim.lsp.diagnostic.goto_next()<CR>
 nnoremap <silent> gd :lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gr :lua vim.lsp.buf.references()<CR>
 nnoremap <silent> K :lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <leader>ca :lua vim.lsp.buf.code_action()<CR>
 nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>
 
 " For code error navigation
@@ -277,8 +280,10 @@ nnoremap <leader>fb :lua require('telescope.builtin').buffers()<CR>
 
 let g:rustfmt_autosave = 1
 
-let g:NERDCreateDefaultMappings = 1
+" Easy commenting
+let g:NERDCreateDefaultMappings = 0
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
+nnoremap <leader>c<space> <plug>NERDCommenterToggle
 
 nnoremap <buffer> <leader>au <cmd>ArduinoUpload<CR>
