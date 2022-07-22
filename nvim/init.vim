@@ -86,7 +86,6 @@ Plug 'romgrk/barbar.nvim'
 Plug 'machakann/vim-sandwich'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
-Plug 'lewis6991/gitsigns.nvim'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'liuchengxu/vista.vim', { 'on': 'Vista!!' }
@@ -162,7 +161,6 @@ lua require('spellsitter').setup()
 " hi Normal guibg=NONE ctermbg=NONE
 lua require('lualine').setup()
 lua require('neoscroll').setup()
-lua require('gitsigns').setup()
 
 
 " Tabs from the awesome barbar plugin
