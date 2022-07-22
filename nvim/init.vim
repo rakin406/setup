@@ -39,6 +39,7 @@ endfun
 autocmd BufWritePre * call TrimWhitespace()
 
 let mapleader = " "
+tnoremap <Esc> <C-\><C-n>
 
 
 " Install vim-plug if not found
