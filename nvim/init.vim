@@ -58,7 +58,8 @@ Plug 'lewis6991/impatient.nvim'
 Plug 'gelguy/wilder.nvim', { 'on': 'CmdlineEnter' }
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'ericbn/vim-solarized'
+" Plug 'ericbn/vim-solarized'
+Plug 'morhetz/gruvbox'
 Plug 'elixir-editors/vim-elixir'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'karb94/neoscroll.nvim'
@@ -137,11 +138,13 @@ endfunction
 
 " UI
 set termguicolors
-set background=light
-colorscheme solarized
-" let g:gruvbox_italic = 1
-" let g:gruvbox_contrast_dark = 'hard'
-" colorscheme gruvbox
+" set background=light
+" colorscheme solarized
+set background=dark
+let g:gruvbox_italic = 1
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
+hi Normal guibg=NONE ctermbg=NONE
 autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 lua require'colorizer'.setup()
 
@@ -159,7 +162,6 @@ require('nvim-treesitter.configs').setup {
 EOF
 
 lua require('spellsitter').setup()
-" hi Normal guibg=NONE ctermbg=NONE
 lua require('lualine').setup()
 lua require('neoscroll').setup()
 
