@@ -188,7 +188,7 @@ let bufferline.auto_hide = v:true
 
 
 " LSP configuration
-let g:coq_settings = { 'auto_start': v:true }
+let g:coq_settings = { 'auto_start': 'shut-up' }
 lua require("nvim-lsp-installer").setup {}
 lua require'lspconfig'.elixirls.setup{}
 lua require'lspconfig'.tsserver.setup{}
