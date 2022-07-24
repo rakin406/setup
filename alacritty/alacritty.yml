@@ -58,19 +58,18 @@ colors:
     white:   '0xd4be98'
 
 window:
-  opacity: 0.8
+  opacity: 0.9
 
-# This font is kinda underrated
 font:
     normal:
-        family: Hasklug Nerd Font
-        style: Medium
+        family: Agave Nerd Font Mono
+        style: Regular
     bold:
-        family: Hasklug Nerd Font
+        family: Agave Nerd Font Mono
         style: Medium
     italic:
-        family: Hasklug Nerd Font
+        family: Agave Nerd Font Mono
         style: Italic
 
     # Don't know if this font is too big or too small for people
-    size: 22.0
+    size: 25.0
