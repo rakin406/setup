@@ -65,6 +65,7 @@ Plug 'karb94/neoscroll.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'lewis6991/spellsitter.nvim'
+Plug 'rhysd/vim-grammarous'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
 Plug 'folke/trouble.nvim'
