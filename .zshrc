@@ -1,7 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
-plugins=(battery last-working-dir zsh-interactive-cd)
+plugins=(last-working-dir)
 ZSH_THEME="agnoster"
-RPROMPT='$(battery_pct_prompt)'
 source "$ZSH/oh-my-zsh.sh"
 
 # NEOVIM IS THE BEST
