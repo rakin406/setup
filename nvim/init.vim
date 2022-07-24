@@ -58,24 +58,18 @@ Plug 'lewis6991/impatient.nvim'
 Plug 'gelguy/wilder.nvim', { 'on': 'CmdlineEnter' }
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
-" Plug 'ericbn/vim-solarized'
 Plug 'morhetz/gruvbox'
 Plug 'elixir-editors/vim-elixir'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'karb94/neoscroll.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'nvim-treesitter/nvim-treesitter-context'
-Plug 'p00f/nvim-ts-rainbow'
-Plug 'stevearc/dressing.nvim'
 Plug 'lewis6991/spellsitter.nvim'
-Plug 'folke/lsp-colors.nvim'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
 Plug 'folke/trouble.nvim'
 Plug 'kevinhwang91/nvim-hlslens'
 Plug 'petertriho/nvim-scrollbar'
-Plug 'RishabhRD/popfix'
-Plug 'RishabhRD/nvim-lsputils'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'pechorin/any-jump.vim', { 'on': 'AnyJump' }
 Plug 'kosayoda/nvim-lightbulb'
@@ -90,13 +84,11 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'liuchengxu/vista.vim', { 'on': 'Vista!!' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'psf/black'
 Plug 'preservim/nerdcommenter'
 Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
 Plug 'stevearc/vim-arduino', { 'on': 'ArduinoUpload' }
-Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
@@ -198,56 +190,6 @@ lua require'lspconfig'.tsserver.setup{}
 lua require'lspconfig'.cssls.setup{}
 lua require'lspconfig'.html.setup{}
 
-
-" Better defaults for LSP actions
-lua <<EOF
-if vim.fn.has('nvim-0.5.1') == 1 then
-    vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
-    vim.lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
-    vim.lsp.handlers['textDocument/definition'] = require'lsputil.locations'.definition_handler
-    vim.lsp.handlers['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
-    vim.lsp.handlers['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
-    vim.lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
-    vim.lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
-    vim.lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
-else
-    local bufnr = vim.api.nvim_buf_get_number(0)
-
-    vim.lsp.handlers['textDocument/codeAction'] = function(_, _, actions)
-        require('lsputil.codeAction').code_action_handler(nil, actions, nil, nil, nil)
-    end
-
-    vim.lsp.handlers['textDocument/references'] = function(_, _, result)
-        require('lsputil.locations').references_handler(nil, result, { bufnr = bufnr }, nil)
-    end
-
-    vim.lsp.handlers['textDocument/definition'] = function(_, method, result)
-        require('lsputil.locations').definition_handler(nil, result, { bufnr = bufnr, method = method }, nil)
-    end
-
-    vim.lsp.handlers['textDocument/declaration'] = function(_, method, result)
-        require('lsputil.locations').declaration_handler(nil, result, { bufnr = bufnr, method = method }, nil)
-    end
-
-    vim.lsp.handlers['textDocument/typeDefinition'] = function(_, method, result)
-        require('lsputil.locations').typeDefinition_handler(nil, result, { bufnr = bufnr, method = method }, nil)
-    end
-
-    vim.lsp.handlers['textDocument/implementation'] = function(_, method, result)
-        require('lsputil.locations').implementation_handler(nil, result, { bufnr = bufnr, method = method }, nil)
-    end
-
-    vim.lsp.handlers['textDocument/documentSymbol'] = function(_, _, result, _, bufn)
-        require('lsputil.symbols').document_handler(nil, result, { bufnr = bufn }, nil)
-    end
-
-    vim.lsp.handlers['textDocument/symbol'] = function(_, _, result, _, bufn)
-        require('lsputil.symbols').workspace_handler(nil, result, { bufnr = bufn }, nil)
-    end
-end
-EOF
-
-
 " Jump to definition with explorer
 let g:any_jump_disable_default_keybindings = 1
 let g:any_jump_search_prefered_engine = 'rg'
@@ -287,21 +229,9 @@ let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 " A better file explorer
 lua require("nvim-tree").setup()
 
-" Tag viewer and finder
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-let g:vista_default_executive = 'ctags'
-let g:vista_fzf_preview = ['right:50%']
-let g:vista#renderer#enable_icon = 1
-" The default icons can't be suitable for all the filetypes, you can extend it as you wish.
-let g:vista#renderer#icons = {
-\   "function": "\uf794",
-\   "variable": "\uf71b",
-\  }
-
 " nnoremap <silent> <leader>fe :Lexplore<CR>
 nnoremap <silent> <leader>fe :NvimTreeToggle<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
-nnoremap <silent> <leader>t :Vista!!<CR>
 
 " Fuzzy finder keybinding
 nnoremap <leader>ff :lua require('telescope.builtin').find_files()<CR>
