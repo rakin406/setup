@@ -30,7 +30,7 @@ set shiftwidth=4
 set softtabstop=4
 
 " Easy configuration go-to
-command! Config find $HOME/.config/nvim/init.vim
+" command! Config find $HOME/.config/nvim/init.vim
 
 " Remove whitespaces automatically on save
 fun! TrimWhitespace()
@@ -86,8 +86,6 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'uga-rosa/cmp-dictionary'
-Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 
 " Debugging
 Plug 'mfussenegger/nvim-dap'
@@ -242,7 +240,6 @@ lua <<EOF
       { name = 'luasnip' }, -- For luasnip users.
     }, {
       { name = 'buffer' },
-      { name = 'nvim_lsp_signature_help' },
     })
   })
 
