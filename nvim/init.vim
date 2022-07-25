@@ -1,4 +1,4 @@
-set guicursor=
+" set guicursor=
 set noerrorbells
 set title
 set clipboard+=unnamedplus
