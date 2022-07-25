@@ -29,8 +29,10 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 
+" Easy configuration go-to
 command! Config find $HOME/.config/nvim/init.vim
 
+" Remove whitespaces automatically on save
 fun! TrimWhitespace()
     let l:save = winsaveview()
     keeppatterns %s/\s\+$//e
@@ -38,6 +40,7 @@ fun! TrimWhitespace()
 endfun
 autocmd BufWritePre * call TrimWhitespace()
 
+" Easier mapping
 let mapleader = " "
 tnoremap <Esc> <C-\><C-n>
 
@@ -53,6 +56,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
 \| endif
 
+" Load plugins
 call plug#begin()
 Plug 'lewis6991/impatient.nvim'
 Plug 'gelguy/wilder.nvim', { 'on': 'CmdlineEnter' }
@@ -69,6 +73,10 @@ Plug 'rhysd/vim-grammarous'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
 Plug 'folke/trouble.nvim'
+Plug 'mfussenegger/nvim-dap'
+Plug 'mfussenegger/nvim-dap-python'
+Plug 'leoluz/nvim-dap-go'
+Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'kevinhwang91/nvim-hlslens'
 Plug 'petertriho/nvim-scrollbar'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
@@ -92,6 +100,7 @@ Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
 Plug 'stevearc/vim-arduino', { 'on': 'ArduinoUpload' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-dap.nvim'
 call plug#end()
 
 " Faster startup
@@ -141,19 +150,16 @@ hi Normal guibg=NONE ctermbg=NONE
 autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 lua require'colorizer'.setup()
 
+" Better syntax highlighting
 lua <<EOF
 require('nvim-treesitter.configs').setup {
     highlight = {
         enable = true,
-    },
-    rainbow = {
-        enable = true,
-        extended_mode = true,
-        max_file_lines = nil,
     }
 }
 EOF
 
+" Load some lua plugins
 lua require('spellsitter').setup()
 lua require('lualine').setup()
 lua require('neoscroll').setup()
@@ -191,6 +197,55 @@ lua require'lspconfig'.tsserver.setup{}
 lua require'lspconfig'.cssls.setup{}
 lua require'lspconfig'.html.setup{}
 
+
+" Debugger
+lua << EOF
+local dap = require('dap')
+dap.adapters.mix_task = {
+  type = 'executable',
+  command = '~/.local/share/nvim/lsp_servers/elixirls/elixir-ls/debugger.sh',
+  args = {}
+}
+dap.adapters.lldb = {
+  type = 'executable',
+  command = '/usr/bin/lldb-vscode', -- adjust as needed, must be absolute path
+  name = 'lldb'
+}
+
+dap.configurations.elixir = {
+  {
+    type = "mix_task",
+    name = "mix test",
+    task = 'test',
+    taskArgs = {"--trace"},
+    request = "launch",
+    startApps = true, -- for Phoenix projects
+    projectDir = "${workspaceFolder}",
+    requireFiles = {
+      "test/**/test_helper.exs",
+      "test/**/*_test.exs"
+    }
+  },
+}
+dap.configurations.rust = {
+  {
+    name = 'Launch',
+    type = 'lldb',
+    request = 'launch',
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+    args = {},
+  },
+}
+EOF
+
+lua require('dap-go').setup()
+lua require("nvim-dap-virtual-text").setup()
+
+
 " Jump to definition with explorer
 let g:any_jump_disable_default_keybindings = 1
 let g:any_jump_search_prefered_engine = 'rg'
@@ -212,6 +267,7 @@ nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>
 lua require("trouble").setup {}
 nnoremap <leader>xx <cmd>TroubleToggle<cr>
 
+" Show errors in scrollbar at right ->
 lua require("scrollbar").setup()
 lua require("scrollbar.handlers.search").setup()
 
@@ -235,10 +291,12 @@ nnoremap <silent> <leader>fe :NvimTreeToggle<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
 
 " Fuzzy finder keybinding
+lua require('telescope').load_extension('dap')
 nnoremap <leader>ff :lua require('telescope.builtin').find_files()<CR>
 nnoremap <leader>fg :lua require('telescope.builtin').live_grep()<CR>
 nnoremap <leader>fb :lua require('telescope.builtin').buffers()<CR>
 
+" Auto format rust code
 let g:rustfmt_autosave = 1
 
 " Easy commenting
@@ -248,4 +306,5 @@ let g:NERDCompactSexyComs = 1
 let g:NERDToggleCheckAllLines = 1
 noremap <leader>c<space> <plug>NERDCommenterToggle
 
+" Use arduino from vim
 nnoremap <buffer> <leader>au <cmd>ArduinoUpload<CR>
