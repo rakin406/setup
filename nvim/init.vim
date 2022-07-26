@@ -109,6 +109,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'rhysd/vim-clang-format'
 Plug 'psf/black'
 Plug 'preservim/nerdcommenter'
 Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
@@ -398,7 +399,17 @@ nnoremap <leader>ff :lua require('telescope.builtin').find_files()<CR>
 nnoremap <leader>fg :lua require('telescope.builtin').live_grep()<CR>
 nnoremap <leader>fb :lua require('telescope.builtin').buffers()<CR>
 
-" Auto format rust code
+" Auto format C/C++
+let g:clang_format#style_options = {
+            \ "BasedOnStyle": "LLVM",
+            \ "IndentWidth": 4,
+            \ "UseTab": "Never",
+            \ "ColumnLimit": 80,
+            \ "AccessModifierOffset": -4,
+            \ "AlignAfterOpenBracket": "AlwaysBreak" }
+autocmd FileType c,cpp ClangFormatAutoEnable
+
+" Auto format Rust
 let g:rustfmt_autosave = 1
 
 " Easy commenting
