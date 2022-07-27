@@ -9,20 +9,20 @@ export EDITOR=nvim
 export MANPAGER='nvim +Man!'
 
 # Programming related stuff
-# export CC=/usr/bin/clang
-# export CXX=/usr/bin/clang++
+export CC=/usr/bin/clang
+export CXX=/usr/bin/clang++
 # export GO111MODULE=on
 # export GOPATH=$HOME/.go
 # export PYENV_ROOT="$HOME/.pyenv"
 
-# Start C++ project without copying like a monkey
+# # Start C++ project without copying like a monkey
 cpp_setup() {
     # Copy cpp stuff
-    cp $HOME/cppheadstart/CMakeLists.txt .
-    cp $HOME/cppheadstart/.editorconfig .
-    cp $HOME/cppheadstart/.gitignore .
-    cp $HOME/cppheadstart/.clang-format .
-    cp $HOME/cppheadstart/.clang-tidy .
+    cp $HOME/code/tools/cppheadstart/CMakeLists.txt .
+    cp $HOME/code/tools/cppheadstart/.editorconfig .
+    cp $HOME/code/tools/cppheadstart/.gitignore .
+    cp $HOME/code/tools/cppheadstart/.clang-format .
+    # cp $HOME/code/tools/cppheadstart/.clang-tidy .
 
     # Source code folder
     mkdir -p src
@@ -40,7 +40,6 @@ export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border'
 # Aliases to save my time
 alias fzf='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 alias nnn='nnn -e'
-# alias vcpkg='$HOME/vcpkg/vcpkg'
 # alias ls='lsd'
 
 # Save space :)
