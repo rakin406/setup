@@ -112,7 +112,12 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'psf/black'
-Plug 'preservim/nerdcommenter'
+
+" Commenting
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+Plug 'numToStr/Comment.nvim'
+
+" Code runner
 Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
 Plug 'stevearc/vim-arduino', { 'on': 'ArduinoUpload' }
 
@@ -174,6 +179,9 @@ lua <<EOF
 require('nvim-treesitter.configs').setup {
     highlight = {
         enable = true,
+    },
+    context_commentstring = {
+        enable = true,
     }
 }
 EOF
@@ -188,6 +196,7 @@ augroup END
 lua require('spellsitter').setup()
 lua require('lualine').setup()
 lua require('neoscroll').setup()
+lua require('Comment').setup()
 
 
 " Tabs from the awesome barbar plugin
@@ -421,13 +430,6 @@ autocmd FileType c,cpp ClangFormatAutoEnable
 
 " Auto format Rust
 let g:rustfmt_autosave = 1
-
-" Easy commenting
-let g:NERDCreateDefaultMappings = 0
-let g:NERDSpaceDelims = 1
-let g:NERDCompactSexyComs = 1
-let g:NERDToggleCheckAllLines = 1
-noremap <leader>c<space> <plug>NERDCommenterToggle
 
 " Use arduino from vim
 nnoremap <buffer> <leader>au <cmd>ArduinoUpload<CR>
