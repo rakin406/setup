@@ -63,10 +63,10 @@ Plug 'gelguy/wilder.nvim', { 'on': 'CmdlineEnter' }
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'morhetz/gruvbox'
-Plug 'elixir-editors/vim-elixir'
 Plug 'norcalli/nvim-colorizer.lua'
 
 " Better syntax highlighting
+Plug 'elixir-editors/vim-elixir'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'nvim-treesitter/nvim-treesitter-context'
 
@@ -175,6 +175,12 @@ require('nvim-treesitter.configs').setup {
     }
 }
 EOF
+
+" Syntax highlighting for Typescript React projects
+augroup SyntaxSettings
+    autocmd!
+    autocmd BufNewFile,BufRead *.tsx set filetype=typescript
+augroup END
 
 " Load some lua plugins
 lua require('spellsitter').setup()
