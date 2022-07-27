@@ -64,6 +64,7 @@ Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'morhetz/gruvbox'
 Plug 'norcalli/nvim-colorizer.lua'
+Plug 'karb94/neoscroll.nvim'
 
 " Better syntax highlighting
 Plug 'elixir-editors/vim-elixir'
@@ -95,6 +96,7 @@ Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'kevinhwang91/nvim-hlslens'
 Plug 'petertriho/nvim-scrollbar'
 Plug 'pechorin/any-jump.vim', { 'on': 'AnyJump' }
+Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'kosayoda/nvim-lightbulb'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -185,6 +187,7 @@ augroup END
 " Load some lua plugins
 lua require('spellsitter').setup()
 lua require('lualine').setup()
+lua require('neoscroll').setup()
 
 
 " Tabs from the awesome barbar plugin
@@ -357,6 +360,9 @@ lua require("nvim-dap-virtual-text").setup()
 let g:any_jump_disable_default_keybindings = 1
 let g:any_jump_search_prefered_engine = 'rg'
 nnoremap <leader>j :AnyJump<CR>
+
+" Search words with style
+nmap <leader>as <Plug>(AerojumpSpace)
 
 " VSCode vibe :)
 lua require('nvim-lightbulb').setup({autocmd = {enabled = true}})
