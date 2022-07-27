@@ -65,7 +65,6 @@ Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'morhetz/gruvbox'
 Plug 'elixir-editors/vim-elixir'
 Plug 'norcalli/nvim-colorizer.lua'
-Plug 'karb94/neoscroll.nvim'
 
 " Better syntax highlighting
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
@@ -180,7 +179,6 @@ EOF
 " Load some lua plugins
 lua require('spellsitter').setup()
 lua require('lualine').setup()
-lua require('neoscroll').setup()
 
 
 " Tabs from the awesome barbar plugin
