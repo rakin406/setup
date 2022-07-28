@@ -62,7 +62,7 @@ Plug 'lewis6991/impatient.nvim'
 Plug 'gelguy/wilder.nvim', { 'on': 'CmdlineEnter' }
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'morhetz/gruvbox'
+Plug 'navarasu/onedark.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'folke/todo-comments.nvim'
 Plug 'karb94/neoscroll.nvim'
@@ -165,13 +165,31 @@ endfunction
 
 " UI
 set termguicolors
-" set background=light
-" colorscheme solarized
 set background=dark
-let g:gruvbox_italic = 1
-let g:gruvbox_contrast_dark = 'hard'
-colorscheme gruvbox
-hi Normal guibg=NONE ctermbg=NONE
+" let g:gruvbox_italic = 1
+" let g:gruvbox_contrast_dark = 'hard'
+" colorscheme gruvbox
+" hi Normal guibg=NONE ctermbg=NONE
+
+" Another REALLY good colorscheme :)
+lua <<EOF
+require('onedark').setup {
+    style = 'deep',
+    transparent = true,  -- Show/hide background
+    term_colors = true, -- Change terminal color as per the selected theme style
+    ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
+    cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
+
+    -- Plugins Config --
+    diagnostics = {
+        darker = true, -- darker colors for diagnostic
+        undercurl = true,   -- use undercurl instead of underline for diagnostics
+        background = true,    -- use background color for virtual text
+    },
+}
+require('onedark').load()
+EOF
+
 autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 lua require'colorizer'.setup()
 lua require'todo-comments'.setup()
