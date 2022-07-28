@@ -70,7 +70,6 @@ Plug 'karb94/neoscroll.nvim'
 " Better syntax highlighting
 Plug 'elixir-editors/vim-elixir'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-Plug 'nvim-treesitter/nvim-treesitter-context'
 
 " For English writing
 Plug 'lewis6991/spellsitter.nvim'
@@ -95,13 +94,11 @@ Plug 'leoluz/nvim-dap-go'
 Plug 'theHamsta/nvim-dap-virtual-text'
 
 Plug 'kevinhwang91/nvim-hlslens'
-Plug 'petertriho/nvim-scrollbar'
 Plug 'pechorin/any-jump.vim', { 'on': 'AnyJump' }
 Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'kosayoda/nvim-lightbulb'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
@@ -408,10 +405,6 @@ nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>
 " For code error navigation
 lua require("trouble").setup {}
 nnoremap <leader>xx <cmd>TroubleToggle<cr>
-
-" Show errors in scrollbar at right ->
-lua require("scrollbar").setup()
-lua require("scrollbar.handlers.search").setup()
 
 " Markdown configuration
 let g:mkdp_refresh_slow = 1
