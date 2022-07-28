@@ -64,6 +64,7 @@ Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'morhetz/gruvbox'
 Plug 'norcalli/nvim-colorizer.lua'
+Plug 'folke/todo-comments.nvim'
 Plug 'karb94/neoscroll.nvim'
 
 " Better syntax highlighting
@@ -173,6 +174,7 @@ colorscheme gruvbox
 hi Normal guibg=NONE ctermbg=NONE
 autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 lua require'colorizer'.setup()
+lua require'todo-comments'.setup()
 
 " Better syntax highlighting
 lua <<EOF
