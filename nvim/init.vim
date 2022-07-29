@@ -58,18 +58,25 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 " Load plugins
 call plug#begin()
+" Optimization
 Plug 'lewis6991/impatient.nvim'
+
+" UI
 Plug 'gelguy/wilder.nvim', { 'on': 'CmdlineEnter' }
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'navarasu/onedark.nvim'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'folke/todo-comments.nvim'
-Plug 'karb94/neoscroll.nvim'
 
 " Better syntax highlighting
 Plug 'elixir-editors/vim-elixir'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+
+" Movement
+Plug 'karb94/neoscroll.nvim'
 
 " For English writing
 Plug 'lewis6991/spellsitter.nvim'
@@ -79,6 +86,8 @@ Plug 'rhysd/vim-grammarous'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
 Plug 'folke/trouble.nvim'
+Plug 'kosayoda/nvim-lightbulb'
+Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -93,20 +102,17 @@ Plug 'mfussenegger/nvim-dap-python'
 Plug 'leoluz/nvim-dap-go'
 Plug 'theHamsta/nvim-dap-virtual-text'
 
+" Utilities
 Plug 'kevinhwang91/nvim-hlslens'
-Plug 'pechorin/any-jump.vim', { 'on': 'AnyJump' }
 Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'kosayoda/nvim-lightbulb'
-Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 Plug 'machakann/vim-sandwich'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
-Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
-Plug 'kyazdani42/nvim-tree.lua'
+Plug 'jghauser/mkdir.nvim'
+
+" Formatting
 Plug 'editorconfig/editorconfig-vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'psf/black'
@@ -119,10 +125,13 @@ Plug 'numToStr/Comment.nvim'
 Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
 Plug 'stevearc/vim-arduino', { 'on': 'ArduinoUpload' }
 
-" File finder
+" Explorers
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-dap.nvim'
+Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
+Plug 'pechorin/any-jump.vim', { 'on': 'AnyJump' }
+Plug 'kyazdani42/nvim-tree.lua'
 call plug#end()
 
 " Faster startup
