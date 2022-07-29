@@ -31,6 +31,9 @@ set softtabstop=4
 set listchars=tab:‣\ ,trail:·,precedes:«,extends:»,eol:⏎
 set list
 
+" Don't check for perl providers
+let g:loaded_perl_provider = 0
+
 " Easy configuration go-to
 " command! Config find $HOME/.config/nvim/init.vim
 
