@@ -71,7 +71,6 @@ Plug 'navarasu/onedark.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'norcalli/nvim-colorizer.lua'
-Plug 'folke/todo-comments.nvim'
 
 " Better syntax highlighting
 Plug 'elixir-editors/vim-elixir'
@@ -200,7 +199,6 @@ EOF
 
 autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 lua require'colorizer'.setup()
-lua require'todo-comments'.setup()
 
 " Better syntax highlighting
 lua <<EOF
