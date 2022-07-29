@@ -437,7 +437,7 @@ nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>
 
 " For code error navigation
 lua require("trouble").setup {}
-nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xx <cmd>TroubleToggle document_diagnostics<cr>
 
 " Markdown configuration
 let g:mkdp_refresh_slow = 1
