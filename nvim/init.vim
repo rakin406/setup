@@ -103,7 +103,6 @@ Plug 'saadparwaiz1/cmp_luasnip'
 " Debugging
 Plug 'mfussenegger/nvim-dap'
 Plug 'mfussenegger/nvim-dap-python'
-Plug 'leoluz/nvim-dap-go'
 Plug 'theHamsta/nvim-dap-virtual-text'
 
 " Utilities
@@ -346,9 +345,6 @@ lua <<EOF
   require('lspconfig')['elixirls'].setup {
     capabilities = capabilities
   }
-  require('lspconfig')['gopls'].setup {
-    capabilities = capabilities
-  }
   require('lspconfig')['pyright'].setup {
     capabilities = capabilities
   }
@@ -411,7 +407,6 @@ dap.configurations.rust = {
 }
 EOF
 
-lua require('dap-go').setup()
 lua require("nvim-dap-virtual-text").setup()
 
 
