@@ -16,7 +16,7 @@ set shortmess+=c
 set smartcase
 set magic
 set showmatch
-set autochdir
+" set autochdir
 set wildmode=list:longest,full
 set spelllang=en
 set spell
