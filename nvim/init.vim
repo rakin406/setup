@@ -28,6 +28,8 @@ set noshowmode
 set expandtab
 set shiftwidth=4
 set softtabstop=4
+set listchars=tab:‣\ ,trail:·,precedes:«,extends:»,eol:⏎
+set list
 
 " Easy configuration go-to
 " command! Config find $HOME/.config/nvim/init.vim
