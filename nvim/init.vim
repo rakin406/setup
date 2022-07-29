@@ -248,6 +248,27 @@ nnoremap <silent>    <A-c> <Cmd>BufferClose<CR>
 let bufferline = get(g:, 'bufferline', {})
 let bufferline.auto_hide = v:true
 
+" Barbar and nvim-tree integration
+lua <<EOF
+vim.api.nvim_create_autocmd('BufWinEnter', {
+  pattern = '*',
+  callback = function()
+    if vim.bo.filetype == 'NvimTree' then
+      require'bufferline.state'.set_offset(31, 'FileTree')
+    end
+  end
+})
+
+vim.api.nvim_create_autocmd('BufWinLeave', {
+  pattern = '*',
+  callback = function()
+    if vim.fn.expand('<afile>'):match('NvimTree') then
+      require'bufferline.state'.set_offset(0)
+    end
+  end
+})
+EOF
+
 
 " Install LSP servers
 lua require("nvim-lsp-installer").setup {}
