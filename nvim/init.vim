@@ -9,7 +9,7 @@ set nowrap
 set colorcolumn=80
 set inccommand=split
 set signcolumn=number
-set hidden
+set nohidden
 set lazyredraw
 set updatetime=300
 set shortmess+=c
@@ -134,7 +134,6 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'pechorin/any-jump.vim', { 'on': 'AnyJump' }
-Plug 'kyazdani42/nvim-tree.lua'
 call plug#end()
 
 " Faster startup
@@ -249,27 +248,6 @@ nnoremap <silent>    <A-c> <Cmd>BufferClose<CR>
 
 let bufferline = get(g:, 'bufferline', {})
 let bufferline.auto_hide = v:true
-
-" Barbar and nvim-tree integration
-lua <<EOF
-vim.api.nvim_create_autocmd('BufWinEnter', {
-  pattern = '*',
-  callback = function()
-    if vim.bo.filetype == 'NvimTree' then
-      require'bufferline.state'.set_offset(31, 'FileTree')
-    end
-  end
-})
-
-vim.api.nvim_create_autocmd('BufWinLeave', {
-  pattern = '*',
-  callback = function()
-    if vim.fn.expand('<afile>'):match('NvimTree') then
-      require'bufferline.state'.set_offset(0)
-    end
-  end
-})
-EOF
 
 
 " Install LSP servers
@@ -449,11 +427,7 @@ let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 
-" A better file explorer
-lua require("nvim-tree").setup()
-
-" nnoremap <silent> <leader>fe :Lexplore<CR>
-nnoremap <silent> <leader>fe :NvimTreeToggle<CR>
+nnoremap <silent> <leader>fe :Lexplore<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
 
 " Fuzzy finder keybinding
