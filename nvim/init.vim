@@ -354,6 +354,9 @@ lua <<EOF
   require('lspconfig')['tsserver'].setup {
     capabilities = capabilities
   }
+  require('lspconfig')['bashls'].setup {
+    capabilities = capabilities
+  }
   require('lspconfig')['cssls'].setup {
     capabilities = capabilities
   }
