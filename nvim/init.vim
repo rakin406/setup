@@ -1,4 +1,4 @@
-" set guicursor=
+set guicursor=
 set noerrorbells
 set title
 set clipboard+=unnamedplus
@@ -77,6 +77,7 @@ Plug 'norcalli/nvim-colorizer.lua'
 
 " Better syntax highlighting
 Plug 'elixir-editors/vim-elixir'
+Plug 'ziglang/zig.vim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
 " Movement
@@ -338,6 +339,9 @@ lua <<EOF
   require('lspconfig')['bashls'].setup {
     capabilities = capabilities
   }
+  require('lspconfig')['dockerls'].setup {
+    capabilities = capabilities
+  }
   require('lspconfig')['cssls'].setup {
     capabilities = capabilities
   }
@@ -449,8 +453,9 @@ let g:clang_format#style_options = {
             \ "AlignAfterOpenBracket": "AlwaysBreak" }
 autocmd FileType c,cpp ClangFormatAutoEnable
 
-" Auto format Rust
+" Auto format
 let g:rustfmt_autosave = 1
+let g:zig_fmt_autosave = 1
 
 " Use arduino from vim
 nnoremap <buffer> <leader>au <cmd>ArduinoUpload<CR>
