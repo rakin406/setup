@@ -77,7 +77,6 @@ Plug 'norcalli/nvim-colorizer.lua'
 
 " Better syntax highlighting
 Plug 'elixir-editors/vim-elixir'
-Plug 'ziglang/zig.vim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
 " Movement
@@ -455,7 +454,6 @@ autocmd FileType c,cpp ClangFormatAutoEnable
 
 " Auto format
 let g:rustfmt_autosave = 1
-let g:zig_fmt_autosave = 1
 
 " Use arduino from vim
 nnoremap <buffer> <leader>au <cmd>ArduinoUpload<CR>
