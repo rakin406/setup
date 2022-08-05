@@ -124,7 +124,6 @@ Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'numToStr/Comment.nvim'
 
 " Code runner
-Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
 Plug 'stevearc/vim-arduino', { 'on': 'ArduinoUpload' }
 
 " Explorers
@@ -496,6 +495,7 @@ lua require('rust-tools').setup({})
 augroup RustSettings
     autocmd!
     autocmd BufNewFile,BufRead *.rs nnoremap <silent> <leader>h :RustToggleInlayHints<CR>
+    autocmd BufNewFile,BufRead *.rs nnoremap <silent> <leader>rr :RustRunnables<CR>
     autocmd BufNewFile,BufRead *.rs nnoremap <silent> <leader>rc :RustOpenCargo<CR>
 augroup END
 
