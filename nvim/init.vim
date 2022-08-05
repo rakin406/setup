@@ -28,7 +28,7 @@ set noshowmode
 set expandtab
 set shiftwidth=4
 set softtabstop=4
-set listchars=tab:‣\ ,trail:·,precedes:«,extends:»,eol:⏎
+set listchars=tab:‣\ ,trail:·,precedes:«,extends:»
 set list
 
 " Don't check for perl providers
@@ -70,7 +70,8 @@ Plug 'lewis6991/impatient.nvim'
 Plug 'gelguy/wilder.nvim', { 'on': 'CmdlineEnter' }
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'navarasu/onedark.nvim'
+Plug 'morhetz/gruvbox'
+" Plug 'navarasu/onedark.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'norcalli/nvim-colorizer.lua'
@@ -102,12 +103,12 @@ Plug 'saadparwaiz1/cmp_luasnip'
 
 " Debugging
 Plug 'mfussenegger/nvim-dap'
-Plug 'mfussenegger/nvim-dap-python'
+" Plug 'mfussenegger/nvim-dap-python'
+Plug 'rcarriga/nvim-dap-ui'
 Plug 'theHamsta/nvim-dap-virtual-text'
 
 " Utilities
 Plug 'kevinhwang91/nvim-hlslens'
-Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'romgrk/barbar.nvim'
 Plug 'machakann/vim-sandwich'
@@ -131,7 +132,6 @@ Plug 'stevearc/vim-arduino', { 'on': 'ArduinoUpload' }
 " Explorers
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'pechorin/any-jump.vim', { 'on': 'AnyJump' }
 call plug#end()
@@ -174,29 +174,29 @@ endfunction
 " UI
 set termguicolors
 set background=dark
-" let g:gruvbox_italic = 1
-" let g:gruvbox_contrast_dark = 'hard'
-" colorscheme gruvbox
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_italicize_comments = 0
+colorscheme gruvbox
 " hi Normal guibg=NONE ctermbg=NONE
 
 " Another REALLY good colorscheme :)
-lua <<EOF
-require('onedark').setup {
-    style = 'darker',
-    transparent = false,  -- Show/hide background
-    term_colors = true, -- Change terminal color as per the selected theme style
-    ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
-    cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
-
-    -- Plugins Config --
-    diagnostics = {
-        darker = true, -- darker colors for diagnostic
-        undercurl = true,   -- use undercurl instead of underline for diagnostics
-        background = false,    -- use background color for virtual text
-    },
-}
-require('onedark').load()
-EOF
+" lua <<EOF
+" require('onedark').setup {
+"     style = 'darker',
+"     transparent = false,  -- Show/hide background
+"     term_colors = true, -- Change terminal color as per the selected theme style
+"     ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
+"     cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
+"
+"     -- Plugins Config --
+"     diagnostics = {
+"         darker = true, -- darker colors for diagnostic
+"         undercurl = true,   -- use undercurl instead of underline for diagnostics
+"         background = false,    -- use background color for virtual text
+"     },
+" }
+" require('onedark').load()
+" EOF
 
 autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 lua require'colorizer'.setup()
@@ -353,31 +353,12 @@ EOF
 " Debugger
 lua << EOF
 local dap = require('dap')
-dap.adapters.mix_task = {
-  type = 'executable',
-  command = '~/.local/share/nvim/lsp_servers/elixirls/elixir-ls/debugger.sh',
-  args = {}
-}
+
+-- Rust
 dap.adapters.lldb = {
   type = 'executable',
   command = '/usr/bin/lldb-vscode', -- adjust as needed, must be absolute path
   name = 'lldb'
-}
-
-dap.configurations.elixir = {
-  {
-    type = "mix_task",
-    name = "mix test",
-    task = 'test',
-    taskArgs = {"--trace"},
-    request = "launch",
-    startApps = true, -- for Phoenix projects
-    projectDir = "${workspaceFolder}",
-    requireFiles = {
-      "test/**/test_helper.exs",
-      "test/**/*_test.exs"
-    }
-  },
 }
 dap.configurations.rust = {
   {
@@ -392,18 +373,79 @@ dap.configurations.rust = {
     args = {},
   },
 }
+
+-- Javascript/Typescript
+dap.adapters.node2 = {
+  type = 'executable',
+  command = 'node',
+  args = {os.getenv('HOME') .. '/dev/microsoft/vscode-node-debug2/out/src/nodeDebug.js'},
+}
+dap.configurations.javascript = {
+  {
+    name = 'Launch',
+    type = 'node2',
+    request = 'launch',
+    program = '${file}',
+    cwd = vim.fn.getcwd(),
+    sourceMaps = true,
+    protocol = 'inspector',
+    console = 'integratedTerminal',
+  },
+  {
+    -- For this to work you need to make sure the node process is started with the `--inspect` flag.
+    name = 'Attach to process',
+    type = 'node2',
+    request = 'attach',
+    processId = require'dap.utils'.pick_process,
+  },
+}
+dap.configurations.typescript = {
+    {
+        name = "ts-node (Node2 with ts-node)",
+        type = "node2",
+        request = "launch",
+        cwd = vim.loop.cwd(),
+        runtimeArgs = { "-r", "ts-node/register" },
+        runtimeExecutable = "node",
+        args = {"--inspect", "${file}"},
+        sourceMaps = true,
+        skipFiles = { "<node_internals>/**", "node_modules/**" },
+    },
+}
+EOF
+
+" Make debugger prettier
+lua <<EOF
+require("dapui").setup()
+
+local dap, dapui = require("dap"), require("dapui")
+dap.listeners.after.event_initialized["dapui_config"] = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+  dapui.close()
+end
 EOF
 
 lua require("nvim-dap-virtual-text").setup()
+
+" Debugger mappings
+nnoremap <silent> <leader>dc <Cmd>lua require'dap'.continue()<CR>
+nnoremap <silent> <leader>o <Cmd>lua require'dap'.step_over()<CR>
+nnoremap <silent> <leader>i <Cmd>lua require'dap'.step_into()<CR>
+nnoremap <silent> <leader>do <Cmd>lua require'dap'.step_out()<CR>
+nnoremap <silent> <leader>b <Cmd>lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> <leader>dr <Cmd>lua require'dap'.repl.close()<CR>
+nnoremap <silent> <leader>t <Cmd>lua require("dapui").toggle()<CR>
 
 
 " Jump to definition with explorer
 let g:any_jump_disable_default_keybindings = 1
 let g:any_jump_search_prefered_engine = 'rg'
 nnoremap <leader>j :AnyJump<CR>
-
-" Search words with style
-nmap <leader>as <Plug>(AerojumpSpace)
 
 " VSCode vibe :)
 lua require('nvim-lightbulb').setup({autocmd = {enabled = true}})
@@ -437,7 +479,6 @@ nnoremap <silent> <leader>fe :Lexplore<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
 
 " Fuzzy finder keybinding
-lua require('telescope').load_extension('dap')
 nnoremap <leader>ff :lua require('telescope.builtin').find_files()<CR>
 nnoremap <leader>fg :lua require('telescope.builtin').live_grep()<CR>
 nnoremap <leader>fb :lua require('telescope.builtin').buffers()<CR>
