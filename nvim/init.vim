@@ -80,9 +80,6 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'elixir-editors/vim-elixir'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
-" Movement
-Plug 'karb94/neoscroll.nvim'
-
 " For English writing
 Plug 'lewis6991/spellsitter.nvim'
 Plug 'rhysd/vim-grammarous'
@@ -222,7 +219,6 @@ augroup END
 " Load some lua plugins
 lua require('spellsitter').setup()
 lua require('lualine').setup()
-lua require('neoscroll').setup()
 lua require('Comment').setup()
 
 
