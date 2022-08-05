@@ -97,12 +97,13 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'simrat39/rust-tools.nvim'
 
 " Debugging
 Plug 'mfussenegger/nvim-dap'
-" Plug 'mfussenegger/nvim-dap-python'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'theHamsta/nvim-dap-virtual-text'
+" Plug 'mfussenegger/nvim-dap-python'
 
 " Utilities
 Plug 'kevinhwang91/nvim-hlslens'
@@ -432,7 +433,7 @@ lua require("nvim-dap-virtual-text").setup()
 nnoremap <silent> <leader>dc <Cmd>lua require'dap'.continue()<CR>
 nnoremap <silent> <leader>o <Cmd>lua require'dap'.step_over()<CR>
 nnoremap <silent> <leader>i <Cmd>lua require'dap'.step_into()<CR>
-nnoremap <silent> <leader>do <Cmd>lua require'dap'.step_out()<CR>
+nnoremap <silent> <leader>s <Cmd>lua require'dap'.step_out()<CR>
 nnoremap <silent> <leader>b <Cmd>lua require'dap'.toggle_breakpoint()<CR>
 nnoremap <silent> <leader>dr <Cmd>lua require'dap'.repl.close()<CR>
 nnoremap <silent> <leader>t <Cmd>lua require("dapui").toggle()<CR>
@@ -489,8 +490,14 @@ let g:clang_format#style_options = {
             \ "AlignAfterOpenBracket": "AlwaysBreak" }
 autocmd FileType c,cpp ClangFormatAutoEnable
 
-" Auto format
+" Better rust development
 let g:rustfmt_autosave = 1
+lua require('rust-tools').setup({})
+augroup RustSettings
+    autocmd!
+    autocmd BufNewFile,BufRead *.rs nnoremap <silent> <leader>h :RustToggleInlayHints<CR>
+    autocmd BufNewFile,BufRead *.rs nnoremap <silent> <leader>rc :RustOpenCargo<CR>
+augroup END
 
 " Use arduino from vim
 nnoremap <buffer> <leader>au <cmd>ArduinoUpload<CR>
