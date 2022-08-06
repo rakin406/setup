@@ -117,6 +117,10 @@ Plug 'jghauser/mkdir.nvim'
 " Formatting
 Plug 'editorconfig/editorconfig-vim'
 Plug 'rhysd/vim-clang-format'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install --frozen-lockfile --production',
+  \ 'branch': 'release/0.x'
+  \ }
 Plug 'psf/black'
 
 " Commenting
@@ -488,6 +492,11 @@ let g:clang_format#style_options = {
             \ "AccessModifierOffset": -4,
             \ "AlignAfterOpenBracket": "AlwaysBreak" }
 autocmd FileType c,cpp ClangFormatAutoEnable
+
+" Javascript formatter
+let g:prettier#exec_cmd_async = 1
+let g:prettier#quickfix_enabled = 0
+let g:prettier#quickfix_auto_focus = 0
 
 " Better rust development
 let g:rustfmt_autosave = 1
