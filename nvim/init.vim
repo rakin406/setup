@@ -70,7 +70,7 @@ Plug 'lewis6991/impatient.nvim'
 Plug 'gelguy/wilder.nvim', { 'on': 'CmdlineEnter' }
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 " Plug 'navarasu/onedark.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -78,7 +78,8 @@ Plug 'norcalli/nvim-colorizer.lua'
 
 " Better syntax highlighting
 Plug 'elixir-editors/vim-elixir'
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+Plug 'sheerun/vim-polyglot'
+" Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
 " For English writing
 Plug 'lewis6991/spellsitter.nvim'
@@ -123,7 +124,7 @@ Plug 'prettier/vim-prettier', {
 Plug 'psf/black'
 
 " Commenting
-Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+" Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'numToStr/Comment.nvim'
 
 " Code runner
@@ -174,9 +175,13 @@ endfunction
 " UI
 set termguicolors
 set background=dark
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_italicize_comments = 0
-colorscheme gruvbox
+let g:gruvbox_material_foreground = 'mix'
+let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_transparent_background = 1
+let g:gruvbox_material_disable_italic_comment = 1
+let g:gruvbox_material_enable_bold = 1
+let g:gruvbox_material_better_performance = 1
+colorscheme gruvbox-material
 " hi Normal guibg=NONE ctermbg=NONE
 
 " Another REALLY good colorscheme :)
@@ -202,16 +207,16 @@ autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 lua require'colorizer'.setup()
 
 " Better syntax highlighting
-lua <<EOF
-require('nvim-treesitter.configs').setup {
-    highlight = {
-        enable = true,
-    },
-    context_commentstring = {
-        enable = true,
-    }
-}
-EOF
+" lua <<EOF
+" require('nvim-treesitter.configs').setup {
+"     highlight = {
+"         enable = true,
+"     },
+"     context_commentstring = {
+"         enable = true,
+"     }
+" }
+" EOF
 
 " Syntax highlighting for Typescript React projects
 augroup SyntaxSettings
@@ -221,8 +226,16 @@ augroup END
 
 " Load some lua plugins
 lua require('spellsitter').setup()
-lua require('lualine').setup()
 lua require('Comment').setup()
+
+" Statusline
+lua <<EOF
+require('lualine').setup {
+    options = {
+        theme = 'gruvbox-material'
+    }
+}
+EOF
 
 " Install LSP servers
 lua require("nvim-lsp-installer").setup {}
