@@ -78,8 +78,8 @@ Plug 'norcalli/nvim-colorizer.lua'
 
 " Better syntax highlighting
 Plug 'elixir-editors/vim-elixir'
-Plug 'sheerun/vim-polyglot'
-" Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+" Plug 'sheerun/vim-polyglot'
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
 " For English writing
 Plug 'lewis6991/spellsitter.nvim'
@@ -124,7 +124,7 @@ Plug 'prettier/vim-prettier', {
 Plug 'psf/black'
 
 " Commenting
-" Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'numToStr/Comment.nvim'
 
 " Code runner
@@ -207,16 +207,22 @@ autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 lua require'colorizer'.setup()
 
 " Better syntax highlighting
-" lua <<EOF
-" require('nvim-treesitter.configs').setup {
-"     highlight = {
-"         enable = true,
-"     },
-"     context_commentstring = {
-"         enable = true,
-"     }
-" }
-" EOF
+lua <<EOF
+require('nvim-treesitter.configs').setup {
+    -- Install parsers synchronously (only applied to `ensure_installed`)
+    sync_install = false,
+
+    -- Automatically install missing parsers when entering buffer
+    auto_install = true,
+
+    highlight = {
+        enable = true,
+    },
+    context_commentstring = {
+        enable = true,
+    },
+}
+EOF
 
 " Syntax highlighting for Typescript React projects
 augroup SyntaxSettings
