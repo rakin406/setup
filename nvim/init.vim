@@ -100,11 +100,12 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'simrat39/rust-tools.nvim'
 
-" Debugging
+" Code quality
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'theHamsta/nvim-dap-virtual-text'
 " Plug 'mfussenegger/nvim-dap-python'
+Plug 'vim-test/vim-test'
 
 " Utilities
 Plug 'kevinhwang91/nvim-hlslens'
@@ -433,6 +434,8 @@ nnoremap <silent> <leader>b <Cmd>lua require'dap'.toggle_breakpoint()<CR>
 nnoremap <silent> <leader>dr <Cmd>lua require'dap'.repl.close()<CR>
 nnoremap <silent> <leader>t <Cmd>lua require("dapui").toggle()<CR>
 
+" Unit testing
+nmap <silent> <leader>at :TestSuite<CR>
 
 " Jump to definition with explorer
 let g:any_jump_disable_default_keybindings = 1
