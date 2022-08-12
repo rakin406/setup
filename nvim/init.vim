@@ -99,6 +99,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'rust-lang/rust.vim'
 Plug 'simrat39/rust-tools.nvim'
 
 " Code quality
@@ -348,19 +349,16 @@ EOF
 lua <<EOF
 require("null-ls").setup({
     sources = {
-        require("null-ls").builtins.code_actions.eslint_d,
+        require("null-ls").builtins.code_actions.eslint,
         require("null-ls").builtins.completion.tags,
         require("null-ls").builtins.diagnostics.cppcheck,
-        require("null-ls").builtins.diagnostics.eslint_d,
+        require("null-ls").builtins.diagnostics.eslint,
         require("null-ls").builtins.diagnostics.flake8,
         require("null-ls").builtins.diagnostics.mypy,
         require("null-ls").builtins.diagnostics.pydocstyle,
         require("null-ls").builtins.diagnostics.pylint,
-        require("null-ls").builtins.diagnostics.revive,
         require("null-ls").builtins.diagnostics.standardjs,
-        require("null-ls").builtins.diagnostics.staticcheck,
         require("null-ls").builtins.diagnostics.tsc,
-        require("null-ls").builtins.diagnostics.golangci_lint,
     },
 })
 EOF
