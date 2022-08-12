@@ -1,4 +1,4 @@
-set guicursor=
+" set guicursor=
 set noerrorbells
 set title
 set clipboard+=unnamedplus
@@ -77,7 +77,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'norcalli/nvim-colorizer.lua'
 
 " Better syntax highlighting
-Plug 'elixir-editors/vim-elixir'
+Plug 'rust-lang/rust.vim'
 " Plug 'sheerun/vim-polyglot'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
@@ -85,7 +85,7 @@ Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'lewis6991/spellsitter.nvim'
 Plug 'rhysd/vim-grammarous'
 
-" Autocompletion and linting
+" Autocompletion
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
 Plug 'folke/trouble.nvim'
@@ -98,8 +98,6 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'jose-elias-alvarez/null-ls.nvim'
-Plug 'rust-lang/rust.vim'
 Plug 'simrat39/rust-tools.nvim'
 
 " Code quality
@@ -107,6 +105,8 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'theHamsta/nvim-dap-virtual-text'
 " Plug 'mfussenegger/nvim-dap-python'
+Plug 'dense-analysis/ale'
+Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'vim-test/vim-test'
 
 " Utilities
@@ -315,9 +315,6 @@ lua <<EOF
   require('lspconfig')['clangd'].setup {
     capabilities = capabilities
   }
-  require('lspconfig')['elixirls'].setup {
-    capabilities = capabilities
-  }
   require('lspconfig')['gopls'].setup {
     capabilities = capabilities
   }
@@ -345,11 +342,13 @@ lua <<EOF
 EOF
 
 
-" Extra LSP features
+" Extra linting
 lua <<EOF
 require("null-ls").setup({
     sources = {
         require("null-ls").builtins.code_actions.eslint,
+        require("null-ls").builtins.completion.luasnip,
+        require("null-ls").builtins.completion.spell,
         require("null-ls").builtins.completion.tags,
         require("null-ls").builtins.diagnostics.cppcheck,
         require("null-ls").builtins.diagnostics.eslint,
