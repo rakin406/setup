@@ -1,4 +1,4 @@
-" set guicursor=
+set guicursor=
 set noerrorbells
 set title
 set clipboard+=unnamedplus
@@ -342,7 +342,7 @@ lua <<EOF
 EOF
 
 
-" Extra linting
+" Extra LSP features
 lua <<EOF
 require("null-ls").setup({
     sources = {
@@ -350,13 +350,6 @@ require("null-ls").setup({
         require("null-ls").builtins.completion.luasnip,
         require("null-ls").builtins.completion.spell,
         require("null-ls").builtins.completion.tags,
-        require("null-ls").builtins.diagnostics.cppcheck,
-        require("null-ls").builtins.diagnostics.eslint,
-        require("null-ls").builtins.diagnostics.flake8,
-        require("null-ls").builtins.diagnostics.mypy,
-        require("null-ls").builtins.diagnostics.pydocstyle,
-        require("null-ls").builtins.diagnostics.pylint,
-        require("null-ls").builtins.diagnostics.standardjs,
         require("null-ls").builtins.diagnostics.tsc,
     },
 })
