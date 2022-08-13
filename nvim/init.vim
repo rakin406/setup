@@ -4,7 +4,6 @@ set title
 set clipboard+=unnamedplus
 set number relativenumber
 set scrolloff=5
-set mouse=a
 set nowrap
 set colorcolumn=80
 set inccommand=split
@@ -404,19 +403,6 @@ dap.configurations.javascript = {
     request = 'attach',
     processId = require'dap.utils'.pick_process,
   },
-}
-dap.configurations.typescript = {
-    {
-        name = "ts-node (Node2 with ts-node)",
-        type = "node2",
-        request = "launch",
-        cwd = vim.loop.cwd(),
-        runtimeArgs = { "-r", "ts-node/register" },
-        runtimeExecutable = "node",
-        args = {"--inspect", "${file}"},
-        sourceMaps = true,
-        skipFiles = { "<node_internals>/**", "node_modules/**" },
-    },
 }
 EOF
 
