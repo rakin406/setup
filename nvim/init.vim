@@ -85,7 +85,7 @@ Plug 'lewis6991/spellsitter.nvim'
 Plug 'rhysd/vim-grammarous'
 
 " Autocompletion
-Plug 'williamboman/nvim-lsp-installer'
+Plug 'williamboman/mason.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'folke/trouble.nvim'
 Plug 'kosayoda/nvim-lightbulb'
@@ -245,8 +245,18 @@ require('lualine').setup {
 }
 EOF
 
-" Install LSP servers
-lua require("nvim-lsp-installer").setup {}
+" Manage servers and tools
+lua <<EOF
+    require("mason").setup({
+        ui = {
+            icons = {
+                package_installed = "✓",
+                package_pending = "➜",
+                package_uninstalled = "✗"
+            }
+        }
+    })
+EOF
 
 " Autocompletion configuration
 set completeopt=menu,menuone,noselect
