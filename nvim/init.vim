@@ -86,6 +86,7 @@ Plug 'rhysd/vim-grammarous'
 
 " Autocompletion
 Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'folke/trouble.nvim'
 Plug 'kosayoda/nvim-lightbulb'
@@ -255,6 +256,11 @@ lua <<EOF
                 package_uninstalled = "✗"
             }
         }
+    })
+    require("mason-lspconfig").setup({
+        ensure_installed = { "bashls", "clangd", "cssls", "gopls", "tsserver",
+        "pyright", "rust_analyzer" },
+        automatic_installation = true
     })
 EOF
 
