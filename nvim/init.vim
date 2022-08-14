@@ -361,7 +361,6 @@ require("null-ls").setup({
     sources = {
         -- Code actions
         require("null-ls").builtins.code_actions.eslint,
-        require("null-ls").builtins.code_actions.refactoring,
         require("null-ls").builtins.code_actions.shellcheck,
 
         -- Completions
