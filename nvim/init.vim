@@ -124,7 +124,6 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install --frozen-lockfile --production',
   \ 'branch': 'release/0.x'
   \ }
-Plug 'psf/black'
 
 " Commenting
 Plug 'JoosepAlviste/nvim-ts-context-commentstring'
