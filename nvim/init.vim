@@ -105,7 +105,6 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'theHamsta/nvim-dap-virtual-text'
 " Plug 'mfussenegger/nvim-dap-python'
-Plug 'dense-analysis/ale'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'vim-test/vim-test'
 
@@ -360,10 +359,24 @@ EOF
 lua <<EOF
 require("null-ls").setup({
     sources = {
+        -- Code actions
         require("null-ls").builtins.code_actions.eslint,
+        require("null-ls").builtins.code_actions.refactoring,
+        require("null-ls").builtins.code_actions.shellcheck,
+
+        -- Completions
         require("null-ls").builtins.completion.luasnip,
-        require("null-ls").builtins.completion.spell,
         require("null-ls").builtins.completion.tags,
+
+        -- Diagnostics
+        require("null-ls").builtins.diagnostics.cppcheck,
+        require("null-ls").builtins.diagnostics.eslint,
+        require("null-ls").builtins.diagnostics.flake8,
+        require("null-ls").builtins.diagnostics.mypy,
+        require("null-ls").builtins.diagnostics.pydocstyle,
+        require("null-ls").builtins.diagnostics.pylint,
+        require("null-ls").builtins.diagnostics.shellcheck,
+        require("null-ls").builtins.diagnostics.tidy,
         require("null-ls").builtins.diagnostics.tsc,
     },
 })
