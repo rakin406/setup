@@ -69,7 +69,7 @@ Plug 'lewis6991/impatient.nvim'
 Plug 'gelguy/wilder.nvim', { 'on': 'CmdlineEnter' }
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'sainnhe/gruvbox-material'
+Plug 'ellisonleao/gruvbox.nvim'
 " Plug 'navarasu/onedark.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -176,14 +176,24 @@ endfunction
 " UI
 set termguicolors
 set background=dark
-let g:gruvbox_material_foreground = 'mix'
-let g:gruvbox_material_background = 'hard'
-let g:gruvbox_material_transparent_background = 1
-let g:gruvbox_material_disable_italic_comment = 1
-let g:gruvbox_material_enable_bold = 1
-let g:gruvbox_material_better_performance = 1
-colorscheme gruvbox-material
-" hi Normal guibg=NONE ctermbg=NONE
+lua <<EOF
+require("gruvbox").setup({
+  undercurl = true,
+  underline = true,
+  bold = true,
+  italic = false,
+  strikethrough = true,
+  invert_selection = true,
+  invert_signs = false,
+  invert_tabline = false,
+  invert_intend_guides = false,
+  inverse = true, -- invert background for search, diffs, statuslines and errors
+  contrast = "hard", -- can be "hard", "soft" or empty string
+  overrides = {},
+})
+vim.cmd("colorscheme gruvbox")
+EOF
+hi Normal guibg=NONE ctermbg=NONE
 
 " Another REALLY good colorscheme :)
 " lua <<EOF
@@ -236,13 +246,7 @@ lua require('spellsitter').setup()
 lua require('Comment').setup()
 
 " Statusline
-lua <<EOF
-require('lualine').setup {
-    options = {
-        theme = 'gruvbox-material'
-    }
-}
-EOF
+lua require('lualine').setup()
 
 " Manage servers and tools
 lua <<EOF
