@@ -78,6 +78,7 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'rust-lang/rust.vim'
 " Plug 'sheerun/vim-polyglot'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+Plug 'p00f/nvim-ts-rainbow'
 
 " For English writing
 Plug 'lewis6991/spellsitter.nvim'
@@ -194,6 +195,10 @@ require('nvim-treesitter.configs').setup {
 
     highlight = {
         enable = true,
+    },
+    rainbow = {
+        enable = true,
+        extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
     },
     context_commentstring = {
         enable = true,
