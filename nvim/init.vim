@@ -69,8 +69,7 @@ Plug 'lewis6991/impatient.nvim'
 Plug 'gelguy/wilder.nvim', { 'on': 'CmdlineEnter' }
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'ellisonleao/gruvbox.nvim'
-" Plug 'navarasu/onedark.nvim'
+Plug 'bluz71/vim-moonfly-colors'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'norcalli/nvim-colorizer.lua'
@@ -176,44 +175,11 @@ endfunction
 " UI
 set termguicolors
 set background=dark
-lua <<EOF
-require("gruvbox").setup({
-  undercurl = true,
-  underline = true,
-  bold = true,
-  italic = false,
-  strikethrough = true,
-  invert_selection = true,
-  invert_signs = false,
-  invert_tabline = false,
-  invert_intend_guides = false,
-  inverse = true, -- invert background for search, diffs, statuslines and errors
-  contrast = "hard", -- can be "hard", "soft" or empty string
-  overrides = {},
-})
-vim.cmd("colorscheme gruvbox")
-EOF
-hi Normal guibg=NONE ctermbg=NONE
-
-" Another REALLY good colorscheme :)
-" lua <<EOF
-" require('onedark').setup {
-"     style = 'darker',
-"     transparent = false,  -- Show/hide background
-"     term_colors = true, -- Change terminal color as per the selected theme style
-"     ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
-"     cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
-"
-"     -- Plugins Config --
-"     diagnostics = {
-"         darker = true, -- darker colors for diagnostic
-"         undercurl = true,   -- use undercurl instead of underline for diagnostics
-"         background = false,    -- use background color for virtual text
-"     },
-" }
-" require('onedark').load()
-" EOF
-
+let g:moonflyCursorColor = v:true
+let g:moonflyItalics = v:false
+let g:moonflyTransparent = v:true
+colorscheme moonfly
+" hi Normal guibg=NONE ctermbg=NONE
 autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 lua require'colorizer'.setup()
 
@@ -265,6 +231,7 @@ lua <<EOF
         automatic_installation = true
     })
 EOF
+
 
 " Autocompletion configuration
 set completeopt=menu,menuone,noselect
