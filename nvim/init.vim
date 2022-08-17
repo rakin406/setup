@@ -6,6 +6,7 @@ set number relativenumber
 set scrolloff=5
 set nowrap
 set colorcolumn=80
+set cursorline
 set inccommand=split
 set signcolumn=number
 set nohidden
@@ -180,6 +181,7 @@ let g:moonflyCursorColor = v:true
 let g:moonflyItalics = v:false
 let g:moonflyTransparent = v:true
 colorscheme moonfly
+hi CursorLine guibg=NONE
 " hi Normal guibg=NONE ctermbg=NONE
 autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 lua require'colorizer'.setup()
