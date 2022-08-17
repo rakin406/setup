@@ -14,7 +14,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-sy
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
 # Copy configuration files
-cp -r nvim "$HOME"/.config/
+cp -r alacritty kitty nvim "$HOME"/.config/
 cp dotfiles/.zshrc dotfiles/.tmux.conf dotfiles/.Xresources "$HOME"/
 
 # Install all powerline fonts
