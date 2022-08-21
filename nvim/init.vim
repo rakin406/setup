@@ -208,12 +208,6 @@ require('nvim-treesitter.configs').setup {
 }
 EOF
 
-" Syntax highlighting for Typescript React projects
-augroup SyntaxSettings
-    autocmd!
-    autocmd BufNewFile,BufRead *.tsx set filetype=typescript
-augroup END
-
 " Load some lua plugins
 lua require('spellsitter').setup()
 lua require('Comment').setup()
