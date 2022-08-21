@@ -135,6 +135,7 @@ Plug 'stevearc/vim-arduino', { 'on': 'ArduinoUpload' }
 " Explorers
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'pechorin/any-jump.vim', { 'on': 'AnyJump' }
 call plug#end()
@@ -474,7 +475,14 @@ let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 nnoremap <silent> <leader>fe :Lexplore<CR>
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
 
-" Fuzzy finder keybinding
+" Fuzzy finder configuration
+lua <<EOF
+require('telescope').setup{ defaults = {
+    file_ignore_patterns = { "node_modules" }
+    }
+}
+require('telescope').load_extension('fzy_native')
+EOF
 nnoremap <leader>ff :lua require('telescope.builtin').find_files()<CR>
 nnoremap <leader>fg :lua require('telescope.builtin').live_grep()<CR>
 nnoremap <leader>fb :lua require('telescope.builtin').buffers()<CR>
