@@ -101,11 +101,8 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'simrat39/rust-tools.nvim'
 
-" Code quality
-Plug 'mfussenegger/nvim-dap'
-Plug 'rcarriga/nvim-dap-ui'
-Plug 'theHamsta/nvim-dap-virtual-text'
-" Plug 'mfussenegger/nvim-dap-python'
+" Debugging
+Plug 'puremourning/vimspector'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'vim-test/vim-test'
 
@@ -358,83 +355,14 @@ require("null-ls").setup({
 EOF
 
 
-" Debugger
-lua << EOF
-local dap = require('dap')
-
--- Rust
-dap.adapters.lldb = {
-  type = 'executable',
-  command = '/usr/bin/lldb-vscode', -- adjust as needed, must be absolute path
-  name = 'lldb'
-}
-dap.configurations.rust = {
-  {
-    name = 'Launch',
-    type = 'lldb',
-    request = 'launch',
-    program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-    end,
-    cwd = '${workspaceFolder}',
-    stopOnEntry = false,
-    args = {},
-  },
-}
-
--- Javascript/Typescript
-dap.adapters.node2 = {
-  type = 'executable',
-  command = 'node',
-  args = {os.getenv('HOME') .. '/dev/microsoft/vscode-node-debug2/out/src/nodeDebug.js'},
-}
-dap.configurations.javascript = {
-  {
-    name = 'Launch',
-    type = 'node2',
-    request = 'launch',
-    program = '${file}',
-    cwd = vim.fn.getcwd(),
-    sourceMaps = true,
-    protocol = 'inspector',
-    console = 'integratedTerminal',
-  },
-  {
-    -- For this to work you need to make sure the node process is started with the `--inspect` flag.
-    name = 'Attach to process',
-    type = 'node2',
-    request = 'attach',
-    processId = require'dap.utils'.pick_process,
-  },
-}
-EOF
-
-" Make debugger prettier
-lua <<EOF
-require("dapui").setup()
-
-local dap, dapui = require("dap"), require("dapui")
-dap.listeners.after.event_initialized["dapui_config"] = function()
-  dapui.open()
-end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-  dapui.close()
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-  dapui.close()
-end
-EOF
-
-lua require("nvim-dap-virtual-text").setup()
-
 " Debugger mappings
-nnoremap <silent> <leader>dc <Cmd>lua require'dap'.continue()<CR>
-nnoremap <silent> <leader>o <Cmd>lua require'dap'.step_over()<CR>
-nnoremap <silent> <leader>i <Cmd>lua require'dap'.step_into()<CR>
-nnoremap <silent> <leader>s <Cmd>lua require'dap'.step_out()<CR>
-nnoremap <silent> <leader>b <Cmd>lua require'dap'.toggle_breakpoint()<CR>
-nnoremap <silent> <leader>dr <Cmd>lua require'dap'.repl.close()<CR>
-nnoremap <silent> <leader>t <Cmd>lua require("dapui").toggle()<CR>
+" nnoremap <silent> <leader>dc <Cmd>lua require'dap'.continue()<CR>
+" nnoremap <silent> <leader>o <Cmd>lua require'dap'.step_over()<CR>
+" nnoremap <silent> <leader>i <Cmd>lua require'dap'.step_into()<CR>
+" nnoremap <silent> <leader>s <Cmd>lua require'dap'.step_out()<CR>
+" nnoremap <silent> <leader>b <Cmd>lua require'dap'.toggle_breakpoint()<CR>
+" nnoremap <silent> <leader>dr <Cmd>lua require'dap'.repl.close()<CR>
+" nnoremap <silent> <leader>t <Cmd>lua require("dapui").toggle()<CR>
 
 " Unit testing
 nmap <silent> <leader>at :TestSuite<CR>
