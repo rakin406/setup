@@ -99,7 +99,6 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'simrat39/rust-tools.nvim'
 
 " Debugging
 Plug 'puremourning/vimspector'
@@ -430,15 +429,8 @@ let g:prettier#exec_cmd_async = 1
 let g:prettier#quickfix_enabled = 0
 let g:prettier#quickfix_auto_focus = 0
 
-" Better rust development
+" Rust formatting
 let g:rustfmt_autosave = 1
-lua require('rust-tools').setup({})
-augroup RustSettings
-    autocmd!
-    autocmd BufNewFile,BufRead *.rs nnoremap <silent> <leader>h :RustToggleInlayHints<CR>
-    autocmd BufNewFile,BufRead *.rs nnoremap <silent> <leader>rr :RustRunnables<CR>
-    autocmd BufNewFile,BufRead *.rs nnoremap <silent> <leader>rc :RustOpenCargo<CR>
-augroup END
 
 " Use arduino from vim
 nnoremap <buffer> <leader>au <cmd>ArduinoUpload<CR>
