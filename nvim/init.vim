@@ -70,7 +70,7 @@ Plug 'lewis6991/impatient.nvim'
 Plug 'gelguy/wilder.nvim', { 'on': 'CmdlineEnter' }
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'bluz71/vim-moonfly-colors'
+Plug 'projekt0n/github-nvim-theme'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'norcalli/nvim-colorizer.lua'
@@ -174,10 +174,16 @@ endfunction
 " UI
 set termguicolors
 set background=dark
-let g:moonflyCursorColor = v:true
-let g:moonflyItalics = v:false
-let g:moonflyTransparent = v:true
-colorscheme moonfly
+
+lua <<EOF
+require("github-theme").setup({
+    comment_style = "NONE",
+    keyword_style = "NONE",
+    function_style = "NONE",
+    variable_style = "NONE"
+})
+EOF
+
 hi CursorLine guibg=NONE
 " hi Normal guibg=NONE ctermbg=NONE
 autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
