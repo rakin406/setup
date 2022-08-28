@@ -109,7 +109,6 @@ Plug 'vim-test/vim-test'
 Plug 'kevinhwang91/nvim-hlslens'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'machakann/vim-sandwich'
-Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
 Plug 'jghauser/mkdir.nvim'
 
@@ -318,6 +317,9 @@ lua <<EOF
     capabilities = capabilities
   }
   require('lspconfig')['tsserver'].setup {
+    capabilities = capabilities
+  }
+  require('lspconfig')['vuels'].setup {
     capabilities = capabilities
   }
   require('lspconfig')['bashls'].setup {
