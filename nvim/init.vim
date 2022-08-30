@@ -5,7 +5,7 @@ set clipboard+=unnamedplus
 set number relativenumber
 set scrolloff=5
 set nowrap
-set colorcolumn=80
+set colorcolumn=81
 set cursorline
 set inccommand=split
 set signcolumn=number
@@ -424,9 +424,7 @@ let g:clang_format#style_options = {
             \ "BasedOnStyle": "LLVM",
             \ "IndentWidth": 4,
             \ "UseTab": "Never",
-            \ "ColumnLimit": 80,
-            \ "AccessModifierOffset": -4,
-            \ "AlignAfterOpenBracket": "AlwaysBreak" }
+            \ "ColumnLimit": 80 }
 autocmd FileType c,cpp ClangFormatAutoEnable
 
 " Javascript formatter
