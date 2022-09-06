@@ -85,7 +85,6 @@ Plug 'lewis6991/spellsitter.nvim'
 Plug 'rhysd/vim-grammarous'
 
 " Autocompletion
-Plug 'williamboman/mason.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Debugging
