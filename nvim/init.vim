@@ -26,8 +26,8 @@ set noshowmode
 
 " Indentation
 set expandtab
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
 set listchars=tab:‣\ ,trail:·,precedes:«,extends:»
 set list
 
@@ -39,9 +39,9 @@ let g:loaded_perl_provider = 0
 
 " Remove whitespaces automatically on save
 fun! TrimWhitespace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
+  let l:save = winsaveview()
+  keeppatterns %s/\s\+$//e
+  call winrestview(l:save)
 endfun
 autocmd BufWritePre * call TrimWhitespace()
 
@@ -70,7 +70,7 @@ Plug 'lewis6991/impatient.nvim'
 Plug 'gelguy/wilder.nvim', { 'on': 'CmdlineEnter' }
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'projekt0n/github-nvim-theme'
+Plug 'morhetz/gruvbox'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'norcalli/nvim-colorizer.lua'
@@ -86,30 +86,16 @@ Plug 'rhysd/vim-grammarous'
 
 " Autocompletion
 Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'folke/trouble.nvim'
-Plug 'kosayoda/nvim-lightbulb'
-Plug 'antoinemadec/FixCursorHold.nvim'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'L3MON4D3/LuaSnip'
-Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Debugging
 Plug 'puremourning/vimspector'
-Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'vim-test/vim-test'
 
 " Utilities
 Plug 'kevinhwang91/nvim-hlslens'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-fugitive'
-Plug 'jghauser/mkdir.nvim'
 
 " Formatting
 Plug 'editorconfig/editorconfig-vim'
@@ -172,18 +158,13 @@ endfunction
 " UI
 set termguicolors
 set background=dark
-
-lua <<EOF
-require("github-theme").setup({
-    comment_style = "NONE",
-    keyword_style = "NONE",
-    function_style = "NONE",
-    variable_style = "NONE"
-})
-EOF
-
-hi CursorLine guibg=NONE
-" hi Normal guibg=NONE ctermbg=NONE
+let g:gruvbox_italic = 0
+let g:gruvbox_transparent_bg = 1
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_italicize_comments = 0
+colorscheme gruvbox
+hi CursorLine guibg=NONE ctermbg=NONE
+hi Normal guibg=NONE ctermbg=NONE
 autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 lua require'colorizer'.setup()
 
@@ -212,153 +193,6 @@ lua require('Comment').setup()
 " Statusline
 lua require('lualine').setup()
 
-" Manage servers and tools
-lua <<EOF
-    require("mason").setup({
-        ui = {
-            icons = {
-                package_installed = "✓",
-                package_pending = "➜",
-                package_uninstalled = "✗"
-            }
-        }
-    })
-    require("mason-lspconfig").setup({
-        ensure_installed = { "bashls", "clangd", "jdtls", "cssls", "gopls", "tsserver",
-        "pyright", "rust_analyzer" },
-        automatic_installation = true
-    })
-EOF
-
-
-" Autocompletion configuration
-set completeopt=menu,menuone,noselect
-
-lua <<EOF
-  -- Setup nvim-cmp.
-  local cmp = require'cmp'
-
-  cmp.setup({
-    snippet = {
-      -- REQUIRED - you must specify a snippet engine
-      expand = function(args)
-        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-      end,
-    },
-    window = {
-      -- completion = cmp.config.window.bordered(),
-      -- documentation = cmp.config.window.bordered(),
-    },
-    mapping = cmp.mapping.preset.insert({
-      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    }),
-    sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
-      { name = 'luasnip' }, -- For luasnip users.
-    }, {
-      { name = 'buffer' },
-    })
-  })
-
-  -- Set configuration for specific filetype.
-  cmp.setup.filetype('gitcommit', {
-    sources = cmp.config.sources({
-      { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-    }, {
-      { name = 'buffer' },
-    })
-  })
-
-  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline('/', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-      { name = 'buffer' }
-    }
-  })
-
-  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-      { name = 'path' }
-    }, {
-      { name = 'cmdline' }
-    })
-  })
-
-  -- Setup lspconfig.
-  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-  capabilities.offsetEncoding = { "utf-16" }
-
-  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-  require('lspconfig')['clangd'].setup {
-    capabilities = capabilities
-  }
-  require('lspconfig')['jdtls'].setup {
-    capabilities = capabilities
-  }
-  require('lspconfig')['gopls'].setup {
-    capabilities = capabilities
-  }
-  require('lspconfig')['pyright'].setup {
-    capabilities = capabilities
-  }
-  require('lspconfig')['rust_analyzer'].setup {
-    capabilities = capabilities
-  }
-  require('lspconfig')['tsserver'].setup {
-    capabilities = capabilities
-  }
-  require('lspconfig')['vuels'].setup {
-    capabilities = capabilities
-  }
-  require('lspconfig')['bashls'].setup {
-    capabilities = capabilities
-  }
-  require('lspconfig')['dockerls'].setup {
-    capabilities = capabilities
-  }
-  require('lspconfig')['cssls'].setup {
-    capabilities = capabilities
-  }
-  require('lspconfig')['html'].setup {
-    capabilities = capabilities
-  }
-EOF
-
-
-" Extra LSP features
-lua <<EOF
-require("null-ls").setup({
-    sources = {
-        -- Code actions
-        require("null-ls").builtins.code_actions.eslint,
-        require("null-ls").builtins.code_actions.shellcheck,
-
-        -- Completions
-        require("null-ls").builtins.completion.luasnip,
-        require("null-ls").builtins.completion.tags,
-
-        -- Diagnostics
-        require("null-ls").builtins.diagnostics.cppcheck,
-        require("null-ls").builtins.diagnostics.eslint,
-        require("null-ls").builtins.diagnostics.flake8,
-        require("null-ls").builtins.diagnostics.mypy,
-        require("null-ls").builtins.diagnostics.pydocstyle,
-        require("null-ls").builtins.diagnostics.pylint,
-        require("null-ls").builtins.diagnostics.shellcheck,
-        require("null-ls").builtins.diagnostics.tidy,
-        require("null-ls").builtins.diagnostics.tsc,
-    },
-})
-EOF
-
-
 " Debugger mappings
 " nnoremap <silent> <leader>dc <Cmd>lua require'dap'.continue()<CR>
 " nnoremap <silent> <leader>o <Cmd>lua require'dap'.step_over()<CR>
@@ -376,27 +210,32 @@ let g:any_jump_disable_default_keybindings = 1
 let g:any_jump_search_prefered_engine = 'rg'
 nnoremap <leader>j :AnyJump<CR>
 
-" VSCode vibe :)
-lua require('nvim-lightbulb').setup({autocmd = {enabled = true}})
 
-" LSP keybindings
-nnoremap <silent> [g :lua vim.lsp.diagnostic.goto_prev()<CR>
-nnoremap <silent> ]g :lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap <silent> gd :lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gr :lua vim.lsp.buf.references()<CR>
-nnoremap <silent> K :lua vim.lsp.buf.hover()<CR>
+" coc.nvim configuration
+set completeopt=menu,menuone,noselect
+set nobackup
+set nowritebackup
+
+" coc.nvim keybindings
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> K :call ShowDocumentation()<CR>
 nnoremap <silent> <leader>ca :lua vim.lsp.buf.code_action()<CR>
-nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>
+xmap <leader>ca  <Plug>(coc-codeaction-selected)
+nmap <leader>ca  <Plug>(coc-codeaction-selected)
+nmap <leader>rn <Plug>(coc-rename)
+nnoremap <silent><nowait> <leader>xx :<C-u>CocList diagnostics<CR>
 
-" For code error navigation
-lua require("trouble").setup {}
-nnoremap <leader>xx <cmd>TroubleToggle document_diagnostics<cr>
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
 
-" Markdown configuration
-let g:mkdp_refresh_slow = 1
-let g:mkdp_filetypes = ['markdown']
-let g:mkdp_theme = 'dark'
-nmap <leader>p <Plug>MarkdownPreviewToggle
 
 " File explorer(netrw)
 let g:netrw_liststyle = 3
