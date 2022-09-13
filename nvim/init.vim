@@ -61,6 +61,8 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
 \| endif
 
+let g:ale_disable_lsp = 1
+
 " Load plugins
 call plug#begin()
 " Optimization
@@ -84,8 +86,9 @@ Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'lewis6991/spellsitter.nvim'
 Plug 'rhysd/vim-grammarous'
 
-" Autocompletion
+" Autocompletion and linting
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/ale'
 
 " Debugging
 Plug 'puremourning/vimspector'
