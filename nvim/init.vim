@@ -61,8 +61,6 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
 \| endif
 
-let g:ale_disable_lsp = 1
-
 " Load plugins
 call plug#begin()
 " Optimization
@@ -88,7 +86,6 @@ Plug 'rhysd/vim-grammarous'
 
 " Autocompletion and linting
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'dense-analysis/ale'
 
 " Debugging
 Plug 'puremourning/vimspector'
@@ -214,7 +211,7 @@ nnoremap <leader>j :AnyJump<CR>
 
 
 " coc.nvim configuration
-set completeopt=menu,menuone,noselect
+" set completeopt=menu,menuone,noselect
 set nobackup
 set nowritebackup
 
