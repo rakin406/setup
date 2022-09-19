@@ -99,6 +99,7 @@ Plug 'tpope/vim-fugitive'
 " Formatting
 Plug 'editorconfig/editorconfig-vim'
 Plug 'rhysd/vim-clang-format'
+Plug 'psf/black'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install --frozen-lockfile --production',
   \ 'branch': 'release/0.x'
