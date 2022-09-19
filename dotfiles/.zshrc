@@ -11,18 +11,17 @@ export MANPAGER='nvim +Man!'
 # Programming related stuff
 export CC=/usr/bin/clang
 export CXX=/usr/bin/clang++
-# export GO111MODULE=on
-# export GOPATH=$HOME/.go
-# export PYENV_ROOT="$HOME/.pyenv"
+export GO111MODULE=on
+export GOPATH=$HOME/.go
+export PYENV_ROOT="$HOME/.pyenv"
 
-# # Start C++ project without copying like a monkey
+# # Start C/C++ project
 cpp_setup() {
-    # Copy cpp stuff
-    cp $HOME/code/tools/cppheadstart/CMakeLists.txt .
-    cp $HOME/code/tools/cppheadstart/.editorconfig .
-    cp $HOME/code/tools/cppheadstart/.gitignore .
-    cp $HOME/code/tools/cppheadstart/.clang-format .
-    # cp $HOME/code/tools/cppheadstart/.clang-tidy .
+    # Copy stuff
+    cp $HOME/code/tools/headstart/.editorconfig .
+    cp $HOME/code/tools/headstart/.gitignore .
+    cp $HOME/code/tools/headstart/.clang-format .
+    cp $HOME/code/tools/headstart/.clang-tidy .
 
     # Source code folder
     mkdir -p src
@@ -32,15 +31,13 @@ cpp_setup() {
     mkdir -p build
 }
 
-# Fzf is really fast
+# Fzf fuzzy finder
 export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border'
-# export FZF_DEFAULT_COMMAND='fd --type f'
-# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Aliases to save my time
 alias fzf='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 alias nnn='nnn -e'
-# alias ls='lsd'
+alias ls='lsd'
 
 # Save space :)
 prompt_context() {
