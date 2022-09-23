@@ -108,6 +108,7 @@ Plug 'prettier/vim-prettier', {
 " Commenting
 Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'numToStr/Comment.nvim'
+Plug 'vim-scripts/DoxygenToolkit.vim'
 
 " Code runner
 Plug 'stevearc/vim-arduino', { 'on': 'ArduinoUpload' }
@@ -265,6 +266,9 @@ let g:clang_format#style_options = {
             \ "UseTab": "Never",
             \ "ColumnLimit": 80 }
 autocmd FileType c,cpp ClangFormatAutoEnable
+
+" Doxygen comment generation
+nnoremap <leader>cd :Dox<CR>
 
 " Javascript formatter
 let g:prettier#exec_cmd_async = 1
