@@ -195,13 +195,17 @@ lua require('Comment').setup()
 lua require('lualine').setup()
 
 " Debugger mappings
-" nnoremap <silent> <leader>dc <Cmd>lua require'dap'.continue()<CR>
-" nnoremap <silent> <leader>o <Cmd>lua require'dap'.step_over()<CR>
-" nnoremap <silent> <leader>i <Cmd>lua require'dap'.step_into()<CR>
-" nnoremap <silent> <leader>s <Cmd>lua require'dap'.step_out()<CR>
-" nnoremap <silent> <leader>b <Cmd>lua require'dap'.toggle_breakpoint()<CR>
-" nnoremap <silent> <leader>dr <Cmd>lua require'dap'.repl.close()<CR>
-" nnoremap <silent> <leader>t <Cmd>lua require("dapui").toggle()<CR>
+nnoremap <leader>da :call vimspector#Launch()<CR>
+nnoremap <leader>dx :call vimspector#Reset()<CR>
+nnoremap <leader>du :call vimspector#StepOut()<CR>
+nnoremap <leader>di :call vimspector#StepInto()<CR>
+nnoremap <leader>do :call vimspector#StepOver()<CR>
+nnoremap <leader>d_ :call vimspector#Restart()<CR>
+nnoremap <leader>dn :call vimspector#Continue()<CR>
+nnoremap <leader>drc :call vimspector#RunToCursor()<CR>
+nnoremap <leader>dh :call vimspector#ToggleBreakpoint()<CR>
+nnoremap <leader>de :call vimspector#ToggleConditionalBreakpoint()<CR>
+nnoremap <leader>dX :call vimspector#ClearBreakpoints()<CR>
 
 " Unit testing
 nmap <silent> <leader>at :TestSuite<CR>
@@ -268,7 +272,7 @@ let g:clang_format#style_options = {
 autocmd FileType c,cpp ClangFormatAutoEnable
 
 " Doxygen comment generation
-nnoremap <leader>cd :Dox<CR>
+nnoremap <silent> <leader>cd :Dox<CR>
 
 " Javascript formatter
 let g:prettier#exec_cmd_async = 1
