@@ -9,8 +9,8 @@ export EDITOR=nvim
 export MANPAGER='nvim +Man!'
 
 # Programming related stuff
-export CC=/usr/bin/clang
-export CXX=/usr/bin/clang++
+export CC=/usr/bin/gcc
+export CXX=/usr/bin/g++
 export GO111MODULE=on
 export GOPATH=$HOME/.go
 export PYENV_ROOT="$HOME/.pyenv"
@@ -56,3 +56,6 @@ source "$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 # if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
     # exec tmux
 # fi
+
+# Created by `userpath` on 2022-09-26 04:44:01
+export PATH="$PATH:/home/rakin/.local/bin"
