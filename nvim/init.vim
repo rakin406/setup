@@ -168,6 +168,7 @@ hi CursorLine guibg=NONE ctermbg=NONE
 hi Normal guibg=NONE ctermbg=NONE
 autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 lua require'colorizer'.setup()
+lua require('hlslens').setup()
 
 " Better syntax highlighting
 lua <<EOF
