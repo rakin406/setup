@@ -160,6 +160,12 @@ lua require('hlslens').setup()
 " Better syntax highlighting
 lua <<EOF
 require('nvim-treesitter.configs').setup {
+    -- A list of parser names, or "all"
+    ensure_installed = {
+        "bash", "c", "cpp", "cmake", "go", "html", "json",
+        "javascript", "typescript", "rust", "yaml", "python"
+    },
+
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
 
