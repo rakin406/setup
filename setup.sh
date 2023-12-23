@@ -3,8 +3,8 @@
 
 # Install programs(apt)
 apt update && apt upgrade
-apt install neofetch lsd git alacritty kitty tmux zsh ranger fonts-powerline \
-    fzf nnn nitrogen picom
+apt install neofetch lsd git alacritty kitty tmux zsh ranger fzf nnn nitrogen \
+    picom
 ./scripts/install-neovim.sh
 
 # make zsh the default shell
@@ -15,5 +15,5 @@ git clone https://github.com/zdharma-continuum/fast-syntax-highlighting ~/.zsh/f
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
 # Copy configuration files
-cp -r alacritty kitty nvim "$HOME"/.config/
+cp -r awesome picom alacritty kitty nvim "$HOME"/.config/
 cp dotfiles/.zshrc dotfiles/.tmux.conf "$HOME"/
