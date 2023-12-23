@@ -4,7 +4,7 @@
 # Install programs(apt)
 apt update && apt upgrade
 apt install git zsh ranger fonts-powerline fzf nnn
-./install-neovim.sh
+./scripts/install-neovim.sh
 
 # make zsh the default shell
 chsh -s $(which zsh)
