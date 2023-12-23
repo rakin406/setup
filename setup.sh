@@ -17,10 +17,3 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosugges
 # Copy configuration files
 cp -r alacritty kitty nvim "$HOME"/.config/
 cp dotfiles/.zshrc dotfiles/.tmux.conf "$HOME"/
-
-# Install all powerline fonts
-git clone https://github.com/powerline/fonts.git --depth=1
-cd fonts && ./install.sh
-# clean-up a bit
-cd ..
-rm -rf fonts
