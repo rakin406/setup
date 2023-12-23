@@ -23,7 +23,7 @@ set spelllang=en
 set spell
 set undodir=$HOME/.config/nvim/undodir
 set undofile
-set noshowmode
+" set noshowmode
 
 set tabstop=4
 set softtabstop=4
@@ -67,25 +67,16 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 " Load plugins
 call plug#begin()
-" Optimization
-Plug 'lewis6991/impatient.nvim'
-
 " UI
 Plug 'gelguy/wilder.nvim', { 'on': 'CmdlineEnter' }
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'morhetz/gruvbox'
-Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'norcalli/nvim-colorizer.lua'
 
 " Better syntax highlighting
 Plug 'rust-lang/rust.vim'
-" Plug 'sheerun/vim-polyglot'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-
-" For English writing
-Plug 'rhysd/vim-grammarous'
 
 " Autocompletion and linting
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -113,9 +104,6 @@ Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'numToStr/Comment.nvim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 
-" Code runner
-Plug 'stevearc/vim-arduino', { 'on': 'ArduinoUpload' }
-
 " Explorers
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -123,9 +111,6 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'pechorin/any-jump.vim', { 'on': 'AnyJump' }
 call plug#end()
-
-" Faster startup
-lua require('impatient')
 
 " Better autocompletion in command mode
 autocmd CmdlineEnter * ++once call s:wilder_init() | call wilder#main#start()
@@ -170,7 +155,6 @@ colorscheme gruvbox
 " hi CursorLine guibg=NONE ctermbg=NONE
 " hi Normal guibg=NONE ctermbg=NONE
 autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
-lua require'colorizer'.setup()
 lua require('hlslens').setup()
 
 " Better syntax highlighting
@@ -190,9 +174,6 @@ EOF
 
 " Load some lua plugins
 lua require('Comment').setup()
-
-" Statusline
-lua require('lualine').setup()
 
 " Debugger mappings
 nnoremap <leader>da :call vimspector#Launch()<CR>
@@ -279,9 +260,3 @@ nnoremap <silent> <leader>cd :Dox<CR>
 let g:prettier#exec_cmd_async = 1
 let g:prettier#quickfix_enabled = 0
 let g:prettier#quickfix_auto_focus = 0
-
-" Rust formatting
-let g:rustfmt_autosave = 1
-
-" Use arduino from vim
-nnoremap <buffer> <leader>au <cmd>ArduinoUpload<CR>
