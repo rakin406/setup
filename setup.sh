@@ -3,7 +3,8 @@
 
 # Install programs(apt)
 apt update && apt upgrade
-apt install neofetch lsd git zsh ranger fonts-powerline fzf nnn
+apt install neofetch lsd git alacritty kitty tmux zsh ranger fonts-powerline \
+    fzf nnn
 ./scripts/install-neovim.sh
 
 # make zsh the default shell
