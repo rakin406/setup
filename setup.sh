@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 # Run with sudo
 
-# Install programs(apt)
+# Install stuff(apt)
 apt update && apt upgrade
-apt install neofetch lsd git alacritty kitty tmux zsh ranger fzf nnn nitrogen \
+apt install neofetch lsd alacritty kitty tmux zsh ranger fzf nnn nitrogen \
     picom
-./scripts/install-neovim.sh
+
+# Install neovim dependencies
+apt install clang build-essential ninja-build gettext libtool libtool-bin \
+    autoconf automake cmake g++ pkg-config unzip curl doxygen git
 
 # make zsh the default shell
 chsh -s $(which zsh)
