@@ -245,13 +245,8 @@ nnoremap <leader>ff :lua require('telescope.builtin').find_files()<CR>
 nnoremap <leader>fg :lua require('telescope.builtin').live_grep()<CR>
 nnoremap <leader>fb :lua require('telescope.builtin').buffers()<CR>
 
-" Auto format C/C++
-let g:clang_format#style_options = {
-            \ "BasedOnStyle": "LLVM",
-            \ "IndentWidth": 4,
-            \ "UseTab": "Never",
-            \ "ColumnLimit": 80 }
-autocmd FileType c,cpp ClangFormatAutoEnable
+" C/C++ formatting
+let g:clang_format#detect_style_file = 1
 
 " Doxygen comment generation
 nnoremap <silent> <leader>cd :Dox<CR>
