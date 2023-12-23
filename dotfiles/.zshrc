@@ -9,8 +9,8 @@ export EDITOR=nvim
 export MANPAGER='nvim +Man!'
 
 # Programming related stuff
-export CC=/usr/bin/gcc
-export CXX=/usr/bin/g++
+export CC=/usr/bin/clang
+export CXX=/usr/bin/clang++
 export GO111MODULE=on
 export GOPATH=$HOME/.go
 export PYENV_ROOT="$HOME/.pyenv"
