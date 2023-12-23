@@ -3,10 +3,11 @@ set noerrorbells
 set title
 set clipboard+=unnamedplus
 set number relativenumber
-set scrolloff=5
+set scrolloff=8
+set nohlsearch
 set nowrap
 set colorcolumn=81
-set cursorline
+set nocursorline
 set inccommand=split
 set signcolumn=number
 set nohidden
@@ -24,10 +25,12 @@ set undodir=$HOME/.config/nvim/undodir
 set undofile
 set noshowmode
 
-" Indentation
-set expandtab
-set shiftwidth=4
+set tabstop=4
 set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+
 set listchars=tab:‣\ ,trail:·,precedes:«,extends:»
 set list
 
@@ -49,11 +52,12 @@ autocmd BufWritePre * call TrimWhitespace()
 let mapleader = " "
 tnoremap <Esc> <C-\><C-n>
 
-
-" Install vim-plug if not found
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+" Auto-install vim-plug
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
 " Run PlugInstall if there are missing plugins
@@ -160,12 +164,12 @@ endfunction
 set termguicolors
 set background=dark
 let g:gruvbox_italic = 0
-let g:gruvbox_transparent_bg = 1
+let g:gruvbox_transparent_bg = 0
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_italicize_comments = 0
 colorscheme gruvbox
-hi CursorLine guibg=NONE ctermbg=NONE
-hi Normal guibg=NONE ctermbg=NONE
+" hi CursorLine guibg=NONE ctermbg=NONE
+" hi Normal guibg=NONE ctermbg=NONE
 autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 lua require'colorizer'.setup()
 lua require('hlslens').setup()
@@ -244,9 +248,10 @@ endfunction
 
 
 " File explorer(netrw)
-let g:netrw_liststyle = 3
+let g:netrw_browse_split = 0
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
+let g:netrw_liststyle = 3
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 
 nnoremap <silent> <leader>fe :Lexplore<CR>
