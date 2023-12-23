@@ -15,22 +15,6 @@ export GO111MODULE=on
 export GOPATH=$HOME/.go
 export PYENV_ROOT="$HOME/.pyenv"
 
-# # Start C/C++ project
-cpp_setup() {
-    # Copy stuff
-    cp $HOME/code/tools/headstart/.editorconfig .
-    cp $HOME/code/tools/headstart/.gitignore .
-    cp $HOME/code/tools/headstart/.clang-format .
-    cp $HOME/code/tools/headstart/.clang-tidy .
-
-    # Source code folder
-    mkdir -p src
-    touch src/main.cpp
-
-    # Build directory for executables
-    mkdir -p build
-}
-
 # Fzf fuzzy finder
 export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border'
 
@@ -42,7 +26,7 @@ alias ls='lsd'
 # Save space :)
 prompt_context() {
     if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-        # prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+        prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
     fi
 }
 
@@ -53,9 +37,9 @@ source "$HOME/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 source "$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # Start tmux by default
-# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-    # exec tmux
-# fi
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+    exec tmux
+fi
 
 # Created by `userpath` on 2022-09-26 04:44:01
 export PATH="$PATH:/home/rakin/.local/bin"
