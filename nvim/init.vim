@@ -85,7 +85,6 @@ Plug 'rust-lang/rust.vim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
 " For English writing
-Plug 'lewis6991/spellsitter.nvim'
 Plug 'rhysd/vim-grammarous'
 
 " Autocompletion and linting
@@ -181,19 +180,15 @@ require('nvim-treesitter.configs').setup {
     sync_install = false,
 
     -- Automatically install missing parsers when entering buffer
-    auto_install = true,
+    auto_install = false,
 
     highlight = {
-        enable = true,
-    },
-    context_commentstring = {
         enable = true,
     },
 }
 EOF
 
 " Load some lua plugins
-lua require('spellsitter').setup()
 lua require('Comment').setup()
 
 " Statusline
