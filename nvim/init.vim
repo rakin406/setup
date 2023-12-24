@@ -163,7 +163,7 @@ require('nvim-treesitter.configs').setup {
     -- A list of parser names, or "all"
     ensure_installed = {
         "bash", "c", "cpp", "cmake", "go", "html", "json",
-        "javascript", "typescript", "rust", "yaml", "python"
+        "javascript", "typescript", "rust", "python"
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -251,13 +251,21 @@ nnoremap <leader>ff :lua require('telescope.builtin').find_files()<CR>
 nnoremap <leader>fg :lua require('telescope.builtin').live_grep()<CR>
 nnoremap <leader>fb :lua require('telescope.builtin').buffers()<CR>
 
-" C/C++ formatting
-let g:clang_format#detect_style_file = 1
-
 " Doxygen comment generation
 nnoremap <silent> <leader>cd :Dox<CR>
 
+" C/C++ formatter
+let g:clang_format#detect_style_file = 1
+
 " Javascript formatter
+let g:prettier#autoformat = 0
 let g:prettier#exec_cmd_async = 1
 let g:prettier#quickfix_enabled = 0
 let g:prettier#quickfix_auto_focus = 0
+
+" All language formatting
+autocmd FileType c,cpp nnoremap <buffer><silent> <leader>cf :ClangFormat<CR>
+autocmd FileType go nnoremap <buffer><silent> <leader>cf :%!gofmt<CR>
+autocmd FileType javascript,typescript nnoremap <buffer><silent> <leader>cf :PrettierAsync<CR>
+autocmd FileType rust nnoremap <buffer><silent> <leader>cf :RustFmt<CR>
+autocmd FileType python nnoremap <buffer><silent> <leader>cf :Black<CR>
