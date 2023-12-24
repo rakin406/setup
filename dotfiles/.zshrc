@@ -21,6 +21,7 @@ export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border'
 # Aliases to save my time
 alias fzf='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 alias nnn='nnn -e'
+alias vim='nvim'
 alias ls='lsd'
 
 # Save space :)
@@ -41,5 +42,5 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
     exec tmux
 fi
 
-# Created by `userpath` on 2022-09-26 04:44:01
 export PATH="$PATH:/home/rakin/.local/bin"
+export PATH="$PATH:/home/rakin/.local/share/bob/nvim-bin"
