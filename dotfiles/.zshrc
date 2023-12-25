@@ -42,5 +42,12 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
     exec tmux
 fi
 
-export PATH="$PATH:/home/rakin/.local/bin"
-export PATH="$PATH:/home/rakin/.local/share/bob/nvim-bin"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
