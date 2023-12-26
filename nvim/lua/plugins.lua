@@ -19,6 +19,8 @@ return {
 
   { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
 
+  { "windwp/nvim-autopairs", event = "InsertEnter", opts = {} },
+
   -- LSP configuration & plugins
   {
     'VonHeikemen/lsp-zero.nvim',
