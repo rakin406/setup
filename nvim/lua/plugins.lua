@@ -10,13 +10,14 @@ return {
   'nvim-tree/nvim-web-devicons',
   'machakann/vim-sandwich',
   'tpope/vim-fugitive',
-  'tpope/vim-sleuth',  -- Detect tabstop and shiftwidth automatically
+  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   'JoosepAlviste/nvim-ts-context-commentstring',
   'mbbill/undotree',
-  "folke/trouble.nvim",
-  "nvim-treesitter/nvim-treesitter-context",
+  'folke/trouble.nvim',
+  'nvim-treesitter/nvim-treesitter-context',
+  'mfussenegger/nvim-lint',
 
-  { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = ...},
+  { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
 
   -- LSP configuration & plugins
   {
