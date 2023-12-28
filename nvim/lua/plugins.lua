@@ -9,6 +9,7 @@ return {
 
   -- NOTE: These are very old vim scripts
   'vim-scripts/a.vim',  -- Alternate files quickly (.c --> .h etc)
+  'vim-scripts/DoxygenToolkit.vim',
 
   { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
 
