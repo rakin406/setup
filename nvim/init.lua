@@ -36,6 +36,12 @@ vim.g.netrw_winsize = 25
 vim.g.netrw_liststyle = 3
 vim.g.netrw_list_hide = [[\(^\|\s\s\)\zs\.\S\+]]
 
+-- Set spell checking for specific file types
+autocmd("FileType", {
+  pattern = { "markdown", "text" },
+  command = "setlocal spell",
+})
+
 -- Remove trailing white space automatically on save
 autocmd({ "BufWritePre" }, {
   pattern = { "*" },
