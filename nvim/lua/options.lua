@@ -37,7 +37,6 @@ vim.opt.title = true
 vim.opt.lazyredraw = true
 vim.opt.smartcase = true
 vim.opt.showmatch = true
-vim.opt.spell = true
 
 vim.opt.listchars:append{tab = "‣ " , trail = "·", precedes = "«", extends = "»"}
 vim.opt.list = true
