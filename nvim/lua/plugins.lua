@@ -1,4 +1,16 @@
 return {
+  'machakann/vim-sandwich',
+  'tpope/vim-fugitive',
+  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  'JoosepAlviste/nvim-ts-context-commentstring',
+  'mbbill/undotree',
+  'nvim-treesitter/nvim-treesitter-context',
+  'mfussenegger/nvim-lint',
+
+  { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
+
+  { "windwp/nvim-autopairs", event = "InsertEnter", opts = {} },
+
   {
     -- Better wildmenu autocompletion
     'gelguy/wilder.nvim',
@@ -7,19 +19,11 @@ return {
     },
   },
 
-  'nvim-tree/nvim-web-devicons',
-  'machakann/vim-sandwich',
-  'tpope/vim-fugitive',
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-  'JoosepAlviste/nvim-ts-context-commentstring',
-  'mbbill/undotree',
-  'folke/trouble.nvim',
-  'nvim-treesitter/nvim-treesitter-context',
-  'mfussenegger/nvim-lint',
-
-  { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
-
-  { "windwp/nvim-autopairs", event = "InsertEnter", opts = {} },
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {},
+  },
 
   -- LSP configuration & plugins
   {
