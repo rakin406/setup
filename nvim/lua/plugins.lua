@@ -3,9 +3,12 @@ return {
   'tpope/vim-fugitive',
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   'JoosepAlviste/nvim-ts-context-commentstring',
-  'mbbill/undotree',
+  'mbbill/undotree',  -- Undo history visualizer
   'nvim-treesitter/nvim-treesitter-context',
   'mfussenegger/nvim-lint',
+
+  -- NOTE: These are very old vim scripts
+  'vim-scripts/a.vim',  -- Alternate files quickly (.c --> .h etc)
 
   { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
 
