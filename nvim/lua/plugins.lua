@@ -7,8 +7,7 @@ return {
   'nvim-treesitter/nvim-treesitter-context',
   'mfussenegger/nvim-lint',
 
-  -- NOTE: These are very old vim scripts
-  'vim-scripts/a.vim',  -- Alternate files quickly (.c --> .h etc)
+  -- NOTE: This is a very old vim script.
   'vim-scripts/DoxygenToolkit.vim',
 
   { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
