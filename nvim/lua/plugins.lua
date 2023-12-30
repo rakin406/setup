@@ -85,4 +85,6 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
   },
+
+  { 'folke/todo-comments.nvim', opts = {} },
 }
