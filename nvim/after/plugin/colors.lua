@@ -1,17 +1,17 @@
 require("gruvbox").setup({
   terminal_colors = true, -- add neovim terminal colors
-  undercurl = false,
-  underline = false,
-  bold = false,
+  undercurl = true,
+  underline = true,
+  bold = true,
   italic = {
     strings = false,
     emphasis = false,
-    comments = false,
+    comments = true,
     operators = false,
     folds = false,
   },
   strikethrough = false,
-  invert_selection = false,
+  invert_selection = true,
   invert_signs = false,
   invert_tabline = false,
   invert_intend_guides = false,
@@ -20,7 +20,7 @@ require("gruvbox").setup({
   palette_overrides = {},
   overrides = {},
   dim_inactive = false,
-  transparent_mode = false,
+  transparent_mode = true,
 })
 
 local function ColorMyPencils(color)
