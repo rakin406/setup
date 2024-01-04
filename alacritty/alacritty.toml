@@ -46,6 +46,12 @@ opacity = 0.8
 general = "Alacritty"
 instance = "Alacritty"
 
+[cursor]
+blink_interval = 500
+
+[cursor.style]
+blinking = "Always"
+
 [font]
 size = 15.0
 
