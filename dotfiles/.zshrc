@@ -1,6 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 plugins=(last-working-dir)
-ZSH_THEME="agnoster"
+ZSH_THEME="dst"
 source "$ZSH/oh-my-zsh.sh"
 
 # NEOVIM IS THE BEST
