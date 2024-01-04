@@ -805,7 +805,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Autostart applications
--- NOTE: For some reason, the script isn't running automatically.
 awful.spawn.with_shell("~/.config/awesome/autorun.sh")
 
 -- Optimization
