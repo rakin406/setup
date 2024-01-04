@@ -7,4 +7,4 @@ function run {
 }
 
 run nitrogen --restore
-run picom --config "$HOME"/.config/picom/picom.conf
+run picom --config "$HOME"/.config/picom/picom.conf --daemon
