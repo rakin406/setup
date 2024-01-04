@@ -44,13 +44,13 @@ white   = "#ebdbb2"
 size = 15.0
 
 [font.normal]
-family = "SauceCodePro Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Regular"
 
 [font.bold]
-family = "SauceCodePro Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Bold"
 
 [font.italic]
-family = "SauceCodePro Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Italic"
