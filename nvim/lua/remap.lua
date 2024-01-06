@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>n", vim.cmd.Ex)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -21,5 +21,6 @@ vim.keymap.set("n", "<leader>ch", "<cmd>!chmod +x %<CR>", { silent = true })
 -- Plugin shortcuts
 -- I didn't put them in separate modules because they are one lines.
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+vim.keymap.set("n", "<leader>mt", vim.cmd.MarkdownPreviewToggle)
 vim.keymap.set("n", "<leader>dg", vim.cmd.Dox)
-vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end)
+vim.keymap.set("n", "<leader>x", function() require("trouble").toggle() end)
