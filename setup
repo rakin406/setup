@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Run with sudo
+#
+# Install necessary programs and copy the dotfiles. Make sure to run with sudo.
 
 # Install stuff(apt)
 apt update && apt upgrade
