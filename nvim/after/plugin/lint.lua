@@ -2,7 +2,6 @@ require('lint').linters_by_ft = {
   cpp = {'cppcheck', 'cpplint'},
   html = {'tidy'},
   lua = {'luacheck'},
-  markdown = {'vale'},
   python = {'pylint'},
   sh = {'shellcheck'},
 }
