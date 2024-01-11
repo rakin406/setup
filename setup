@@ -25,8 +25,8 @@ rm -rf ~/.config/alacritty ~/.config/awesome ~/.config/kitty ~/.config/nvim \
     ~/.config/picom
 
 # Create configuration symlinks
-ln -s "$(pwd)"/dotfiles/.tmux.conf ~/.tmux.conf
-ln -s "$(pwd)"/dotfiles/.zshrc ~/.zshrc
+ln -s "$(pwd)"/tmux/.tmux.conf ~/.tmux.conf
+ln -s "$(pwd)"/zsh/.zshrc ~/.zshrc
 ln -s "$(pwd)"/alacritty ~/.config/alacritty
 ln -s "$(pwd)"/awesome ~/.config/awesome
 ln -s "$(pwd)"/kitty ~/.config/kitty
