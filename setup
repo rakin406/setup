@@ -4,7 +4,8 @@
 
 # Install stuff(apt)
 apt update && apt upgrade
-apt install neofetch lsd kitty tmux zsh ranger fzf nnn nitrogen picom
+apt install neofetch lsd kitty tmux python3 python3-pip python3-libtmux zsh \
+    ranger fzf nnn nitrogen picom
 
 # Install neovim dependencies
 apt install clang build-essential ninja-build gettext libtool libtool-bin \
