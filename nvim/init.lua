@@ -32,7 +32,6 @@ autocmd('TextYankPost', {
 -- Built-in netrw file explorer
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
 
 -- Set spell checking for specific file types
 autocmd("FileType", {
