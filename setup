@@ -10,6 +10,9 @@ apt install neofetch lsd kitty tmux zsh ranger fzf nnn nitrogen picom
 apt install clang build-essential ninja-build gettext libtool libtool-bin \
     autoconf automake cmake g++ pkg-config unzip curl doxygen git
 
+# Install tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 # make zsh the default shell
 chsh -s "$(which zsh)"
 # install ohmyzsh
