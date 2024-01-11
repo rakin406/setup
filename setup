@@ -11,10 +11,14 @@ apt install neofetch lsd kitty tmux python3 python3-pip python3-libtmux zsh \
 apt install clang build-essential ninja-build gettext libtool libtool-bin \
     autoconf automake cmake g++ pkg-config unzip curl doxygen git
 
-# make zsh the default shell
+# Make zsh the default shell
 chsh -s "$(which zsh)"
-# install ohmyzsh
+# Install ohmyzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+# zsh plugins
+rm -rf ~/.oh-my-zsh/custom/plugins
+ln -s "$(pwd)"/zsh/plugins ~/.oh-my-zsh/custom/plugins
 git clone https://github.com/zdharma-continuum/fast-syntax-highlighting \
     ~/.zsh/fast-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
