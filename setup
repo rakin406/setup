@@ -36,3 +36,6 @@ ln -s "$(pwd)"/awesome ~/.config/awesome
 ln -s "$(pwd)"/kitty ~/.config/kitty
 ln -s "$(pwd)"/nvim ~/.config/nvim
 ln -s "$(pwd)"/picom ~/.config/picom
+
+# Create executable symlinks
+ln -s "$(pwd)"/scripts/tmux-sessionizer ~/.local/bin/tmux-sessionizer
