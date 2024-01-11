@@ -20,7 +20,6 @@ export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border'
 
 # Aliases to save my time
 alias fzf='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
-alias nnn='nnn -e'
 alias vim='nvim'
 alias ls='lsd'
 
@@ -51,3 +50,5 @@ export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+eval "$(zoxide init zsh)"
