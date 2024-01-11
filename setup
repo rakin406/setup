@@ -14,7 +14,7 @@ apt install clang build-essential ninja-build gettext libtool libtool-bin \
 # make zsh the default shell
 chsh -s "$(which zsh)"
 # install ohmyzsh
-# sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 git clone https://github.com/zdharma-continuum/fast-syntax-highlighting \
     ~/.zsh/fast-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
