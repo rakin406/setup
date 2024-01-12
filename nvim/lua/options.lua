@@ -14,7 +14,6 @@ vim.opt.wrap = false
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
-vim.opt.mouse = "a"
 vim.opt.clipboard:append("unnamedplus")
 
 vim.opt.backup = false
