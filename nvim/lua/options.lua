@@ -27,8 +27,6 @@ vim.opt.signcolumn = "yes"
 
 vim.opt.updatetime = 250
 
-vim.opt.completeopt = "menuone,noselect"
-
 vim.opt.termguicolors = true
 
 vim.opt.colorcolumn = "81"
