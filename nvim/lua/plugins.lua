@@ -79,6 +79,11 @@ return {
   },
 
   {
+    'ThePrimeagen/harpoon',
+    branch = 'harpoon2',
+  },
+
+  {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
   },
