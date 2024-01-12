@@ -9,8 +9,8 @@ vim.keymap.set("n", "<leader>P", function() vim.cmd.Git("pull --rebase") end)
 vim.keymap.set("n", "<leader>t", ":Git push -u origin ")
 
 -- Easily add files
-vim.keymap.set("n", "<leader>af", ":Git add %<CR>")
-vim.keymap.set("n", "<leader>ae", ":Git add -A<CR>")
+vim.keymap.set("n", "<leader>ga", ":Git add %<CR>")
+vim.keymap.set("n", "<leader>ge", ":Git add -A<CR>")
 
 vim.keymap.set("n", "<leader>co", ":Git checkout ")
 vim.keymap.set("n", "<leader>ci", ":Git commit -m \"\"<Left>")
