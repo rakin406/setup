@@ -13,7 +13,8 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- Delete and paste without losing yank register
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
-vim.keymap.set("n", "Q", "<Nop>")
+vim.keymap.set("n", "Q", "<nop>")
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>ch", "<cmd>!chmod +x %<CR>", { silent = true })
