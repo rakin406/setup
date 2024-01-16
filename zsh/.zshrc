@@ -1,5 +1,5 @@
 export ZSH="$HOME/.oh-my-zsh"
-plugins=(git git-commit)
+plugins=(git)
 ZSH_THEME="dst"
 source "$ZSH/oh-my-zsh.sh"
 
