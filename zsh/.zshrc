@@ -50,5 +50,3 @@ export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
-eval "$(zoxide init zsh)"
