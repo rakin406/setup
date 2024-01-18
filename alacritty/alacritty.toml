@@ -53,22 +53,22 @@ blink_interval = 500
 blinking = "Always"
 
 [font]
-size = 15.0
+size = 16.0
 
 [font.normal]
-family = "JetBrainsMono Nerd Font"
-style = "Regular"
+family = "AnonymicePro Nerd Font"
+style = "Bold"
 
 [font.bold]
-family = "JetBrainsMono Nerd Font"
+family = "AnonymicePro Nerd Font"
 style = "Bold"
 
 [font.italic]
-family = "JetBrainsMono Nerd Font"
-style = "Italic"
+family = "AnonymicePro Nerd Font"
+style = "Bold Italic"
 
 [font.bold_italic]
-family = "JetBrainsMono Nerd Font"
+family = "AnonymicePro Nerd Font"
 style = "Bold Italic"
 
 [font.offset]
