@@ -12,7 +12,7 @@ export MANPAGER='nvim +Man!'
 export CC=/usr/bin/clang
 export CXX=/usr/bin/clang++
 export GO111MODULE=on
-export GOPATH=$HOME/.go
+export GOPATH="$HOME/.go"
 export PYENV_ROOT="$HOME/.pyenv"
 
 # Fzf fuzzy finder
@@ -50,3 +50,6 @@ export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# opam configuration
+[[ ! -r "$HOME"/.opam/opam-init/init.zsh ]] || source "$HOME"/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
