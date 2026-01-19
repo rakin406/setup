@@ -6,7 +6,7 @@ local options = {
     json = { "prettier" },
     javascript = { "prettier" },
     typescript = { "prettier" },
-    python = { "ruff" },
+    python = { "black" },
     cpp = { "clang-format" },
   },
 
