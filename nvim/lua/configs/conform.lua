@@ -4,6 +4,7 @@ local options = {
     css = { "prettier" },
     html = { "prettier" },
     json = { "prettier" },
+    java = { "google-java-format" },
     javascript = { "prettier" },
     typescript = { "prettier" },
     python = { "black" },
