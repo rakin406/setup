@@ -1,39 +1,36 @@
 #!/usr/bin/env bash
-#
-# Install necessary programs and copy the dotfiles. Make sure to run with sudo.
+set -euo pipefail
 
-# Install stuff(apt)
-apt update && apt upgrade
-apt install neofetch lsd kitty tmux python3 python3-pip python3-libtmux zsh \
-    zoxide fzf nitrogen picom
+echo "Installing packages..."
 
-# Install neovim dependencies
-apt install clang build-essential ninja-build gettext libtool libtool-bin \
-    autoconf automake cmake g++ pkg-config unzip curl doxygen git
+sudo apt update
+sudo apt install -y \
+  neofetch lsd kitty tmux python3 python3-pip python3-libtmux zsh zoxide fzf nitrogen \
+  picom clang build-essential ninja-build gettext libtool libtool-bin autoconf \
+  automake cmake g++ pkg-config unzip curl doxygen git
 
-# Make zsh the default shell
-chsh -s "$(which zsh)"
-# Install ohmyzsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+echo "Installing Oh My Zsh..."
 
-# zsh plugins
-rm -rf ~/.oh-my-zsh/custom/plugins
-ln -s "$(pwd)"/zsh/plugins ~/.oh-my-zsh/custom/plugins
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
+
 git clone https://github.com/zdharma-continuum/fast-syntax-highlighting \
-    ~/.zsh/fast-syntax-highlighting
+  ~/.zsh/fast-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
-# Remove existing configurations
-rm ~/.tmux.conf ~/.zshrc
-rm -rf ~/.config/alacritty ~/.config/awesome ~/.config/i3 ~/.config/kitty ~/.config/nvim \
-    ~/.config/picom
+echo "Creating config symlinks..."
 
-# Create configuration symlinks
-ln -s "$(pwd)"/tmux/.tmux.conf ~/.tmux.conf
-ln -s "$(pwd)"/zsh/.zshrc ~/.zshrc
-ln -s "$(pwd)"/alacritty ~/.config/alacritty
-ln -s "$(pwd)"/awesome ~/.config/awesome
-ln -s "$(pwd)"/i3 ~/.config/i3
-ln -s "$(pwd)"/kitty ~/.config/kitty
-ln -s "$(pwd)"/nvim ~/.config/nvim
-ln -s "$(pwd)"/picom ~/.config/picom
+mkdir -p ~/.config
+
+ln -sf "$(pwd)"/zsh/plugins ~/.oh-my-zsh/custom/plugins
+ln -sf "$(pwd)"/tmux/.tmux.conf ~/.tmux.conf
+ln -sf "$(pwd)"/zsh/.zshrc ~/.zshrc
+ln -sf "$(pwd)"/alacritty ~/.config/alacritty
+ln -sf "$(pwd)"/awesome ~/.config/awesome
+ln -sf "$(pwd)"/i3 ~/.config/i3
+ln -sf "$(pwd)"/kitty ~/.config/kitty
+ln -sf "$(pwd)"/nvim ~/.config/nvim
+ln -sf "$(pwd)"/picom ~/.config/picom
+
+echo "Done."
