@@ -11,7 +11,6 @@ export MANPAGER='nvim +Man!'
 # Programming related stuff
 export CC=/usr/bin/clang
 export CXX=/usr/bin/clang++
-export GO111MODULE=on
 export GOPATH="$HOME/.go"
 export PYENV_ROOT="$HOME/.pyenv"
 
@@ -60,7 +59,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # pnpm
-export PNPM_HOME="/home/rakin/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
