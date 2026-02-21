@@ -1,9 +1,13 @@
 return {
   {
     "stevearc/conform.nvim",
-    event = 'BufWritePre', -- uncomment for format on save
+    event = "BufWritePre", -- uncomment for format on save
     opts = require "configs.conform",
   },
+
+  -- Mason core
+  { "williamboman/mason.nvim", config = true },
+  { "williamboman/mason-lspconfig.nvim", dependencies = "mason.nvim", config = true },
 
   -- These are some examples, uncomment them if you want to see them work!
   {
@@ -17,12 +21,15 @@ return {
   { import = "nvchad.blink.lazyspec" },
 
   {
-  	"nvim-treesitter/nvim-treesitter",
-  	opts = {
-  		ensure_installed = {
-  			"vim", "lua", "vimdoc",
-       "html", "css"
-  		},
-  	},
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+      },
+    },
   },
 }

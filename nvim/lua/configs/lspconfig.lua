@@ -1,6 +1,6 @@
-require("nvchad.configs.lspconfig").defaults()
-
-local servers = { "html", "cssls", "clangd", "jdtls", "basedpyright", "ts_ls" }
-vim.lsp.enable(servers)
-
--- read :h vim.lsp.config for changing options of lsp servers
+-- Auto setup any LSP installed in Mason
+require("mason-lspconfig").setup_handlers {
+  function(server_name) -- default handler
+    require("lspconfig")[server_name].setup {}
+  end,
+}
