@@ -54,11 +54,16 @@ workspace_layout default
 # hide_edge_borders both
 
 # Set inner/outer gaps
-# gaps inner 6
-# gaps outer 3
+gaps inner 10
+gaps outer 10
+
+# Smart gaps (no gaps if only one window)
+smart_gaps on
+smart_borders on
 
 # show window title bars (not officially supported with i3gaps)
-default_border none
+default_border pixel 2
+default_floating_border pixel 2
 
 # window title alignment
 #title_align center
@@ -505,11 +510,11 @@ set $mediumgrey     #8b8b8b
 set $yellowbrown    #e1b700
 
 # define colors for windows:
-#class                      border      bground     text        indicator   child_border
-client.focused              $lightblue  $darkblue   $white      $mediumgrey $mediumgrey
-client.unfocused            $darkblue   $darkblue   $grey       $darkgrey   $darkgrey
-client.focused_inactive     $darkblue   $darkblue   $grey       $black      $black
-client.urgent               $urgentred  $urgentred  $white      $yellowbrown    $yellowbrown
+# class                 border    background  text      indicator  child_border
+client.focused          #7aa2f7   #1a1b26     #ffffff   #7aa2f7    #7aa2f7
+client.unfocused        #2e3440   #1a1b26     #888888   #2e3440    #2e3440
+client.focused_inactive #3b4252   #1a1b26     #cccccc   #3b4252    #3b4252
+client.urgent           #bf616a   #1a1b26     #ffffff   #bf616a    #bf616a
 
 ############################################
 # bar settings (input comes from i3blocks) #
