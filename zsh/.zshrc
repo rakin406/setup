@@ -21,6 +21,7 @@ export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border'
 alias fzf='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 alias vim='nvim'
 alias ls='lsd'
+alias cat='bat'
 alias pn='pnpm'
 
 # Save space :)
