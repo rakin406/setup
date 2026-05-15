@@ -1,6 +1,8 @@
--- Auto setup any LSP installed in Mason
-require("mason-lspconfig").setup_handlers {
-  function(server_name) -- default handler
-    require("lspconfig")[server_name].setup {}
-  end,
-}
+require("mason-lspconfig").setup()
+
+local servers = require("mason-lspconfig").get_installed_servers()
+
+for _, server in ipairs(servers) do
+  vim.lsp.config(server, {})
+  vim.lsp.enable(server)
+end
