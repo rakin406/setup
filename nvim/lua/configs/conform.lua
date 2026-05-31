@@ -1,12 +1,12 @@
 local options = {
   formatters_by_ft = {
     lua = { "stylua" },
-    css = { "prettier" },
-    html = { "prettier" },
-    json = { "prettier" },
+    css = { "oxfmt" },
+    html = { "oxfmt" },
+    json = { "oxfmt" },
     java = { "clang-format" },
-    javascript = { "prettier" },
-    typescript = { "prettier" },
+    javascript = { "oxfmt" },
+    typescript = { "oxfmt" },
     python = { "black" },
     cpp = { "clang-format" },
   },
